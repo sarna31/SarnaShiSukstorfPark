@@ -1,0 +1,18 @@
+---
+title: "Import_data"
+author: "Yoyo Shi"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r setup}
+library(here)
+library(haven)
+```
+
