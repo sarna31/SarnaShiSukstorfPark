@@ -210,3 +210,145 @@ dim(Ethiopia_Section_U_U31)
 dim(Ethiopia_Section_U)
 ```
 
+## Honduras
+
+```{r Honduras read data}
+Honduras_MTF_HN17_C_solar_clean <- read_dta("Data/Raw/Honduras/MTF_HN17_C_solar_clean.dta")
+Honduras_MTF_HN17_F_clean <- read_dta("Data/Raw/Honduras/MTF_HN17_F_clean.dta")
+Honduras_MTF_HN17_G_clean <- read_dta("Data/Raw/Honduras/MTF_HN17_G_clean.dta")
+Honduras_MTF_HN17_H_clean <- read_dta("Data/Raw/Honduras/MTF_HN17_H_clean.dta")
+Honduras_MTF_HN17_HH_clean <- read_dta("Data/Raw/Honduras/MTF_HN17_HH_clean.dta")
+Honduras_MTF_HN17_I_ALL <- read_dta("Data/Raw/Honduras/MTF_HN17_I_ALL.dta")
+Honduras_MTF_HN17_N <- read_dta("Data/Raw/Honduras/MTF_HN17_N.dta")
+Honduras_MTF_HN17_P <- read_dta("Data/Raw/Honduras/MTF_HN17_P.dta")
+Honduras_MTF_HN17_Q <- read_dta("Data/Raw/Honduras/MTF_HN17_Q.dta")
+```
+
+```{r Honduras df dimension}
+dim(Honduras_MTF_HN17_C_solar_clean)
+dim(Honduras_MTF_HN17_F_clean)
+dim(Honduras_MTF_HN17_G_clean)
+dim(Honduras_MTF_HN17_H_clean)
+dim(Honduras_MTF_HN17_HH_clean)
+dim(Honduras_MTF_HN17_I_ALL)
+dim(Honduras_MTF_HN17_N)
+dim(Honduras_MTF_HN17_P)
+dim(Honduras_MTF_HN17_Q)
+```
+
+## Kenya
+
+```{r Kenya read data}
+Kenya_MTF_HH_Battery_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Battery_Data_Final.dta")
+Kenya_MTF_HH_Cooking_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Cooking_Data_Final.dta")
+Kenya_MTF_HH_Core_Survey_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Core_Survey_Final_Data_trimmed-2.dta")
+Kenya_MTF_HH_Roster <- read_dta("Data/Raw/Kenya/MTF_HH_Roster.dta")
+Kenya_MTF_HH_M1_Asset_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Sec.M1_Asset_Data_Final.dta")
+Kenya_MTF_HH_M2_Asset_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Sec.M2_Asset_Data_Final.dta")
+Kenya_MTF_HH_M3_Asset_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Sec.M3_Asset_Data_Final.dta")
+Kenya_MTF_HH_Solar_Roster <- read_dta("Data/Raw/Kenya/MTF_HH_Solar_Roster.dta")
+Kenya_MTF_section_i_to_k <- read_dta("Data/Raw/Kenya/MTF_section_i_to_k.dta")
+Kenya_weight <- read_dta("Data/Raw/Kenya/weight.dta")
+```
+
+```{r Kenya df dimension}
+dim(Kenya_MTF_HH_Battery_Data_Final)
+dim(Kenya_MTF_HH_Cooking_Data_Final)
+dim(Kenya_MTF_HH_Core_Survey_Final)
+dim(Kenya_MTF_HH_Roster)
+dim(Kenya_MTF_HH_M1_Asset_Data_Final)
+dim(Kenya_MTF_HH_M2_Asset_Data_Final)
+dim(Kenya_MTF_HH_M3_Asset_Data_Final)
+dim(Kenya_MTF_HH_Solar_Roster)
+dim(Kenya_MTF_section_i_to_k)
+dim(Kenya_weight)
+```
+
+## Liberia
+
+```{r Liberia read data}
+Liberia_MTF_HH_Characteristics <- read_dta("Data/Raw/Liberia/MTF_HH_Characteristics.dta")
+Liberia_MTF_HH_Main <- read_dta("Data/Raw/Liberia/MTF_HH_Main.dta")
+Liberia_MTF_HH_SectionC1 <- read_dta("Data/Raw/Liberia/MTF_HH_SectionC1.dta")
+Liberia_MTF_HH_SectionC2 <- read_dta("Data/Raw/Liberia/MTF_HH_SectionC2.dta")
+Liberia_MTF_HH_SectionC3 <- read_dta("Data/Raw/Liberia/MTF_HH_SectionC3.dta")
+Liberia_MTF_HH_SectionG <- read_dta("Data/Raw/Liberia/MTF_HH_SectionG.dta")
+Liberia_MTF_HH_SectionH <- read_dta("Data/Raw/Liberia/MTF_HH_SectionH.dta")
+Liberia_MTF_HH_SectionM <- read_dta("Data/Raw/Liberia/MTF_HH_SectionM.dta")
+```
+
+```{r Liberia df dimension}
+dim(Liberia_MTF_HH_Characteristics)
+dim(Liberia_MTF_HH_Main)
+dim(Liberia_MTF_HH_SectionC1)
+dim(Liberia_MTF_HH_SectionC2)
+dim(Liberia_MTF_HH_SectionC3)
+dim(Liberia_MTF_HH_SectionG)
+dim(Liberia_MTF_HH_SectionH)
+dim(Liberia_MTF_HH_SectionM)
+```
+
+## Myanmar
+
+```{r Myanmar read data}
+Myanmar_household_weights <- read_dta("Data/Raw/Myanmar/household_weights.dta")
+Myanmar_01_main <- read_dta("Data/Raw/Myanmar/Myanmar_01_main.dta")
+Myanmar_02_individual <- read_dta("Data/Raw/Myanmar/Myanmar_02_individual.dta")
+Myanmar_03_appliance <- read_dta("Data/Raw/Myanmar/Myanmar_03_appliance.dta")
+Myanmar_04_rech_battery <- read_dta("Data/Raw/Myanmar/Myanmar_04_rech_battery.dta")
+Myanmar_05_solar <- read_dta("Data/Raw/Myanmar/Myanmar_05_solar.dta")
+Myanmar_06_lamp <- read_dta("Data/Raw/Myanmar/Myanmar_06_lamp.dta")
+Myanmar_07_DryCell_appliance <- read_dta("Data/Raw/Myanmar/Myanmar_07_DryCell_appliance.dta")
+Myanmar_08_DryCell_batteries <- read_dta("Data/Raw/Myanmar/Myanmar_08_DryCell_batteries.dta")
+Myanmar_09_Cookstove_H1A <- read_dta("Data/Raw/Myanmar/Myanmar_09_Cookstove_H1A.dta")
+Myanmar_10_Cookstove_detailed <- read_dta("Data/Raw/Myanmar/Myanmar_10_Cookstove_detailed.dta")
+```
+
+```{r Myanmar df dimension}
+dim(Myanmar_household_weights)
+dim(Myanmar_01_main)
+dim(Myanmar_02_individual)
+dim(Myanmar_03_appliance)
+dim(Myanmar_04_rech_battery)
+dim(Myanmar_05_solar)
+dim(Myanmar_06_lamp)
+dim(Myanmar_07_DryCell_appliance)
+dim(Myanmar_08_DryCell_batteries)
+dim(Myanmar_09_Cookstove_H1A)
+dim(Myanmar_10_Cookstove_detailed)
+```
+
+## Nepal
+
+```{r Nepal read data}
+Nepal_C_SolarBasedDevice <- read_dta("Data/Raw/Nepal/C_SolarBasedDevice.dta")
+Nepal_C120_Battery <- read_dta("Data/Raw/Nepal/C120_Battery.dta")
+Nepal_FamilyMembers <- read_dta("Data/Raw/Nepal/FamilyMembers.dta")
+Nepal_G_Kerosene <- read_dta("Data/Raw/Nepal/G_Kerosene.dta")
+Nepal_H_LightSource <- read_dta("Data/Raw/Nepal/H_LightSource.dta")
+Nepal_J_Cookstove <- read_dta("Data/Raw/Nepal/J_Cookstove.dta")
+Nepal_M_Consumption <- read_dta("Data/Raw/Nepal/M_consumption.dta")
+Nepal_Main_Dataset <- read_dta("Data/Raw/Nepal/maindataset.dta")
+Nepal_NLIST1_Household_Assets <- read_dta("Data/Raw/Nepal/NLIST1_Household_Assets.dta")
+Nepal_NLIST2_Appliance <- read_dta("Data/Raw/Nepal/NLIST2_Appliance.dta")
+Nepal_R_Time_Use <- read_dta("Data/Raw/Nepal/R_time_use.dta")
+Nepal_S_Health_Impact <- read_dta("Data/Raw/Nepal/S_Health_Impact.dta")
+Nepal_Sample_Weights <- read_dta("Data/Raw/Nepal/sample_weights.dta")
+```
+
+```{r Nepal df dimension}
+dim(Nepal_C_SolarBasedDevice)
+dim(Nepal_C120_Battery)
+dim(Nepal_FamilyMembers)
+dim(Nepal_G_Kerosene)
+dim(Nepal_J_Cookstove)
+dim(Nepal_M_Consumption)
+dim(Nepal_Main_Dataset)
+dim(Nepal_NLIST1_Household_Assets)
+dim(Nepal_NLIST2_Appliance)
+dim(Nepal_R_Time_Use)
+dim(Nepal_S_Health_Impact)
+dim(Nepal_Sample_Weights)
+```
+
+
