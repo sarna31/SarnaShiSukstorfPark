@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Loading packages
 
-```{r setup}
+```{r packages}
 library(here)
 library(haven)
 ```
@@ -31,7 +31,8 @@ Cambodia_Roster_Q <- read_dta("Data/Raw/Cambodia/Roster Q.dta")
 Cambodia_Roster_R <- read_dta("Data/Raw/Cambodia/Roster R.dta")
 Cambodia_Solar_Roster <- read_dta("Data/Raw/Cambodia/Solar Roster.dta")
 Cambodia_Village_Fuel_Roster <- read_dta("Data/Raw/Cambodia/Village_Fuel Roster.dta")
-Cambodia_Village_Infrastructure_Roster <- read_dta("Data/Raw/Cambodia/Village_Infrastructure Roster.dta")
+Cambodia_Village_Infrastructure_Roster <- 
+  read_dta("Data/Raw/Cambodia/Village_Infrastructure Roster.dta")
 Cambodia_Village_Main_Dataset <- read_dta("Data/Raw/Cambodia/Village_Main Dataset.dta")
 ```
 
@@ -68,11 +69,16 @@ Ethiopia_Community_Section_H <- read_dta("Data/Raw/Ethiopia/Community_Section H.
 Ethiopia_Community_Section_I <- read_dta("Data/Raw/Ethiopia/Community_Section I.dta")
 Ethiopia_Community_Section_J_J9 <- read_dta("Data/Raw/Ethiopia/Community_Section J_J9.dta")
 Ethiopia_Community_Section_J <- read_dta("Data/Raw/Ethiopia/Community_Section J.dta")
-Ethiopia_Facility_Section_K_K1_K57 <- read_dta("Data/Raw/Ethiopia/Facility_Section K_K1_K57.dta")
-Ethiopia_Facility_Section_K_K58_K80_Education <- read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Education.dta")
-Ethiopia_Facility_Section_K_K58_K80_Government <- read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Government.dta")
-Ethiopia_Facility_Section_K_K58_K80_Health <- read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Health.dta")
-Ethiopia_Facility_Section_K_K58_K80_Worship <- read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Worship.dta")
+Ethiopia_Facility_Section_K_K1_K57 <- 
+  read_dta("Data/Raw/Ethiopia/Facility_Section K_K1_K57.dta")
+Ethiopia_Facility_Section_K_K58_K80_Education <- 
+  read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Education.dta")
+Ethiopia_Facility_Section_K_K58_K80_Government <- 
+  read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Government.dta")
+Ethiopia_Facility_Section_K_K58_K80_Health <- 
+  read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Health.dta")
+Ethiopia_Facility_Section_K_K58_K80_Worship <- 
+  read_dta("Data/Raw/Ethiopia/Facility_Section_K_K58_K80_Worship.dta")
 Ethiopia_Identification <- read_dta("Data/Raw/Ethiopia/Identification.dta")
 Ethiopia_Section_A_HHRoster <- read_dta("Data/Raw/Ethiopia/Section A_HHRoster.dta")
 Ethiopia_Section_B_B20 <- read_dta("Data/Raw/Ethiopia/Section B_B20.dta")
@@ -241,11 +247,15 @@ dim(Honduras_MTF_HN17_Q)
 ```{r Kenya read data}
 Kenya_MTF_HH_Battery_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Battery_Data_Final.dta")
 Kenya_MTF_HH_Cooking_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Cooking_Data_Final.dta")
-Kenya_MTF_HH_Core_Survey_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Core_Survey_Final_Data_trimmed-2.dta")
+Kenya_MTF_HH_Core_Survey_Final <- 
+  read_dta("Data/Raw/Kenya/MTF_HH_Core_Survey_Final_Data_trimmed-2.dta")
 Kenya_MTF_HH_Roster <- read_dta("Data/Raw/Kenya/MTF_HH_Roster.dta")
-Kenya_MTF_HH_M1_Asset_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Sec.M1_Asset_Data_Final.dta")
-Kenya_MTF_HH_M2_Asset_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Sec.M2_Asset_Data_Final.dta")
-Kenya_MTF_HH_M3_Asset_Data_Final <- read_dta("Data/Raw/Kenya/MTF_HH_Sec.M3_Asset_Data_Final.dta")
+Kenya_MTF_HH_M1_Asset_Data_Final <- 
+  read_dta("Data/Raw/Kenya/MTF_HH_Sec.M1_Asset_Data_Final.dta")
+Kenya_MTF_HH_M2_Asset_Data_Final <- 
+  read_dta("Data/Raw/Kenya/MTF_HH_Sec.M2_Asset_Data_Final.dta")
+Kenya_MTF_HH_M3_Asset_Data_Final <- 
+  read_dta("Data/Raw/Kenya/MTF_HH_Sec.M3_Asset_Data_Final.dta")
 Kenya_MTF_HH_Solar_Roster <- read_dta("Data/Raw/Kenya/MTF_HH_Solar_Roster.dta")
 Kenya_MTF_section_i_to_k <- read_dta("Data/Raw/Kenya/MTF_section_i_to_k.dta")
 Kenya_weight <- read_dta("Data/Raw/Kenya/weight.dta")
@@ -390,20 +400,26 @@ Nigeria_MTF_NG_HH_Sec_C <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_C.dta")
 Nigeria_MTF_NG_HH_Sec_E <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_E.dta")
 Nigeria_MTF_NG_HH_Sec_F_Fuel <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_F_FUEL.dta")
 Nigeria_MTF_NG_HH_Sec_F <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_F.dta")
-Nigeria_MTF_NG_HH_Sec_G_Lamp_Candle <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_G_LAMP_CANDLE.dta")
+Nigeria_MTF_NG_HH_Sec_G_Lamp_Candle <- 
+  read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_G_LAMP_CANDLE.dta")
 Nigeria_MTF_NG_HH_Sec_G_Light <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_G_LIGHT.dta")
 Nigeria_MTF_NG_HH_Sec_H <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_H.dta")
 Nigeria_MTF_NG_HH_Sec_I_Stove <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_I_STOVE.dta")
 Nigeria_MTF_NG_HH_Sec_I <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_I.dta")
 Nigeria_MTF_NG_HH_Sec_J <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_J.dta")
 Nigeria_MTF_NG_HH_Sec_K <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_K.dta")
-Nigeria_MTF_NG_HH_Sec_L_12_Months_Expen <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L_12_MONTHS_EXPEN.dta")
-Nigeria_MTF_NG_HH_Sec_L_30_Days_Expen <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L_30_DAYS_EXPEN.dta")
-Nigeria_MTF_NG_HH_Sec_L_Consumption <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L_CONSUMPTION.dta")
+Nigeria_MTF_NG_HH_Sec_L_12_Months_Expen <- 
+  read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L_12_MONTHS_EXPEN.dta")
+Nigeria_MTF_NG_HH_Sec_L_30_Days_Expen <- 
+  read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L_30_DAYS_EXPEN.dta")
+Nigeria_MTF_NG_HH_Sec_L_Consumption <- 
+  read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L_CONSUMPTION.dta")
 Nigeria_MTF_NG_HH_Sec_L <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_L.dta")
-Nigeria_MTF_NG_HH_Sec_N_Elec_Asset <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_N_ELEC_ASSET.dta")
+Nigeria_MTF_NG_HH_Sec_N_Elec_Asset <- 
+  read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_N_ELEC_ASSET.dta")
 Nigeria_MTF_NG_HH_Sec_N_List <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_N_LIST.dta")
-Nigeria_MTF_NG_HH_Sec_P_Shock_List <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_P_SHOCK_LIST.dta")
+Nigeria_MTF_NG_HH_Sec_P_Shock_List <- 
+  read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_P_SHOCK_LIST.dta")
 Nigeria_MTF_NG_HH_Sec_P <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_P.dta")
 Nigeria_MTF_NG_HH_Sec_Q <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_Q.dta")
 Nigeria_MTF_NG_HH_Sec_S <- read_dta("Data/Raw/Nigeria/MTF_NG_HH_SEC_S.dta")
@@ -484,21 +500,35 @@ Zambia_Express_Sections <- read_dta("Data/Raw/Zambia/EXPRESS SECTIONS.dta")
 Zambia_sample_weight <- read_dta("Data/Raw/Zambia/sample_weight.dta")
 Zambia_Section_A_Household_Roster <- read_dta("Data/Raw/Zambia/SECTION A  HOUSEHOLD ROSTER.dta")
 Zambia_Section_C_Solar_Devices <- read_dta("Data/Raw/Zambia/SECTION C SOLAR DEVICES.dta")
-Zambia_Section_C_Supply_And_Demand_For_Electricity_C120_C123 <- read_dta("Data/Raw/Zambia/SECTION C SUPPLY AND DEMAND FOR ELECTRICTY C120-C123.dta")
-Zambia_Section_F_Kerosen_Fuel_Based_Candle_Lighting_F1_F14 <- read_dta("Data/Raw/Zambia/SECTION F KEROSEN_FUEL BASED_CANDLE LIGHTING F1-F14.dta")
-Zambia_Section_F_Kerosen_Fuel_Based_Candle_Lighting_F16_F21 <- read_dta("Data/Raw/Zambia/SECTION F KEROSEN_FUEL BASED_CANDLE LIGHTING F16-F21.dta")
-Zambia_Section_G_Dry_Cell_Batteries <- read_dta("Data/Raw/Zambia/SECTION G DRY CELL BATTERIES.dta")
-Zambia_Section_H_Household_Fuel_Consumption_H1_H18 <- read_dta("Data/Raw/Zambia/SECTION H HOUSEHOLD FUEL CONSUMPTION H1-H18.dta")
-Zambia_Section_H_Household_Fuel_Consumption_H19_H21 <- read_dta("Data/Raw/Zambia/SECTION H HOUSEHOLD FUEL CONSUMPTION H19-H21.dta")
-Zambia_Section_I_Use_Of_Cookstoves <- read_dta("Data/Raw/Zambia/SECTION I USE OF COOKSTOVES.dta")
-Zambia_Section_L_Consumption_Expenditure <- read_dta("Data/Raw/Zambia/SECTION L CONSUMPTION_EXPENDITURE.dta")
-Zambia_Section_M_Household_Assets_Transport <- read_dta("Data/Raw/Zambia/SECTION M HOUSEHOLD ASSETS TRANSPORT.dta")
-Zambia_Section_N_Household_Assets_Electric <- read_dta("Data/Raw/Zambia/SECTION N HOUSEHOLD ASSETS ELECTRIC.dta")
-Zambia_Section_O_Household_Land_Ownership <- read_dta("Data/Raw/Zambia/SECTION O HOUSEHOLD LAND OWNERSHIP.dta")
-Zambia_Section_P_Household_Economic_Shocks <- read_dta("Data/Raw/Zambia/SECTION P HOUSEHOLD ECONOMIC SHOCKS.dta")
+Zambia_Section_C_Supply_And_Demand_For_Electricity_C120_C123 <- 
+  read_dta("Data/Raw/Zambia/SECTION C SUPPLY AND DEMAND FOR ELECTRICTY C120-C123.dta")
+Zambia_Section_F_Kerosen_Fuel_Based_Candle_Lighting_F1_F14 <- 
+  read_dta("Data/Raw/Zambia/SECTION F KEROSEN_FUEL BASED_CANDLE LIGHTING F1-F14.dta")
+Zambia_Section_F_Kerosen_Fuel_Based_Candle_Lighting_F16_F21 <- 
+  read_dta("Data/Raw/Zambia/SECTION F KEROSEN_FUEL BASED_CANDLE LIGHTING F16-F21.dta")
+Zambia_Section_G_Dry_Cell_Batteries <- 
+  read_dta("Data/Raw/Zambia/SECTION G DRY CELL BATTERIES.dta")
+Zambia_Section_H_Household_Fuel_Consumption_H1_H18 <- 
+  read_dta("Data/Raw/Zambia/SECTION H HOUSEHOLD FUEL CONSUMPTION H1-H18.dta")
+Zambia_Section_H_Household_Fuel_Consumption_H19_H21 <- 
+  read_dta("Data/Raw/Zambia/SECTION H HOUSEHOLD FUEL CONSUMPTION H19-H21.dta")
+Zambia_Section_I_Use_Of_Cookstoves <- 
+  read_dta("Data/Raw/Zambia/SECTION I USE OF COOKSTOVES.dta")
+Zambia_Section_L_Consumption_Expenditure <- 
+  read_dta("Data/Raw/Zambia/SECTION L CONSUMPTION_EXPENDITURE.dta")
+Zambia_Section_M_Household_Assets_Transport <- 
+  read_dta("Data/Raw/Zambia/SECTION M HOUSEHOLD ASSETS TRANSPORT.dta")
+Zambia_Section_N_Household_Assets_Electric <- 
+  read_dta("Data/Raw/Zambia/SECTION N HOUSEHOLD ASSETS ELECTRIC.dta")
+Zambia_Section_O_Household_Land_Ownership <- 
+  read_dta("Data/Raw/Zambia/SECTION O HOUSEHOLD LAND OWNERSHIP.dta")
+Zambia_Section_P_Household_Economic_Shocks <- 
+  read_dta("Data/Raw/Zambia/SECTION P HOUSEHOLD ECONOMIC SHOCKS.dta")
 Zambia_Section_R_Time_Use <- read_dta("Data/Raw/Zambia/SECTION R TIME USE.dta")
-Zambia_Section_S_Health_Impacts_S1_S5 <- read_dta("Data/Raw/Zambia/SECTION S HEALTH IMPACTS S1-S5.dta")
-Zambia_Section_S_Health_Impacts_S6_S11 <- read_dta("Data/Raw/Zambia/SECTION S HEALTH IMPACTS S6-S11.dta")
+Zambia_Section_S_Health_Impacts_S1_S5 <- 
+  read_dta("Data/Raw/Zambia/SECTION S HEALTH IMPACTS S1-S5.dta")
+Zambia_Section_S_Health_Impacts_S6_S11 <- 
+  read_dta("Data/Raw/Zambia/SECTION S HEALTH IMPACTS S6-S11.dta")
 ```
 
 ```{r Zambia df dimension}
@@ -522,4 +552,3 @@ dim(Zambia_Section_R_Time_Use)
 dim(Zambia_Section_S_Health_Impacts_S1_S5)
 dim(Zambia_Section_S_Health_Impacts_S6_S11)
 ```
-
