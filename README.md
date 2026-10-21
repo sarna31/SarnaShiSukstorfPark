@@ -9,6 +9,7 @@
 **Project Overview**
 Access to reliable and affordable electricity is an important component of economic development. This project aims to explore the relationship between electricity access and economic development using the analysis and visualization skills we have developed throughout the first half of the semester.
 
+<<<<<<< HEAD
 **Research Question**
 How is electricity access associated with  economic development across different countries? How do these relationships vary by region, income groups, and other demographic characteristics?
 

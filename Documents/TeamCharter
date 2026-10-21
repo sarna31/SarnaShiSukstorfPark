@@ -1,0 +1,59 @@
+## Team Purpose/Mission:
+We hope to answer a research question about economic development & electricity acess using analysis and visualization, applying skills we've learned across this semester.
+Our intended audience are global development decision-makers, like NGOs (i.e. World Bank, UN).
+We intend our product to look and act professional, with a user-friendly interface/graphics and clear understanding of the data.
+
+## Communication Plan & Collaborative Coding:
+We plan to communicate through WhatsApp, and have a group to coordinate our communication. 
+Direct requests for communication should be responded to within 24 hours (such as direct @s). 
+We will meet regularly on Thursdays between 1:25pm and 3:55pm, with addition meetings as necessary scheduled on evenings or weekends. 
+For collaborative coding, we will work on local files as much as possible and individual coding files, then copy-pasting into master documents to avoid versioning issues. 
+When we meet weekly on Thursdays, we will establish next-steps and specific deliverables for each group member to achieve before the next weekly meeting. These specific deliverables will work towards a schedule that will allow us to meet the deliverable required at the end of the semester.
+
+## Roles & Responsibilities:
+Peter is interested in GIS/python and developing a user interface.
+Ishaan is interested in using Python, regression modeling, writing.
+Henry is interested in data wrangling and using both R & Python.
+Yoyo is intested in using R, looking for patterns, statistics.
+
+Responsiblities will be shared throughout the group, with changes week-to-week depending on what is required at each stage of the process. Clear expectations about what each team member will accomplish each week will be established during weekly check-ins, as well as verification of team contributions of the past week. 
+
+Weekly, Peter and Ishaan, and Henry and Yoyo will swap code to verify the other's work (and maybe also learn something new). 
+
+While certain team members may contribute more or less on a given week, all team members will attempt to ensure their equal contribution in the project.
+
+## Operating Norms & Ground Rules:
+Decisions will be made through universal consent. 
+Files will be well organized. Raw data files will NOT be edited. Group meetings will be used to discuss important decisions - such as how we should segment or clean the data. Decisions consdidered minor or inconsequential are up to each team member. 
+
+## Values & Behaviors:
+Respectfulness, Responsibility, Professionalism, Timeliness, Communication.
+- Team members will respect each other's boundaries and personhood. 
+- Team members will complete their assigned tasks, and communicate if that's not gonna happen.
+- Team members will communicate challegnes with each other, including if they think another team member is not contributing enough or is not following THE CHARTER.
+
+## Resources & Constraints:
+We can reach out to Mark Jeuland about the data if we have questions that he might be able to answer, and can reach out to the professors of this course with coding questions. 
+We will document clearly assumptions that we make, data we chose to leave out, and decision-making criteria to allow the reproducibility of our work.
+
+## Decision-Making Guidelines:
+Decisions will be made through universal consent established at weekly group meetings.
+If we cannot reach consensus, we will first make every effort to find middle ground that works for eveyrone. If this is not possible, we will consult the guidance of a professor of this course to learn how we can move forward. If a team member wants to do something extra, they can.
+
+## Goals & Objectives:
+Something we are proud to show off, which is useful and aesthetic and professional. 
+We will meet all the deadlines and expected deliverables of this class.
+
+## Schedule & Milestones:
+Defining Research Questions & Project Scope: Completed by end of meeting 2.
+Assessing Data Feasibility: Completed before meeting 3.
+Preparing and Combining Datasets: Completing before meeting 3.
+Conducting Exploratory Analysis: Conducted before meeting 4.
+Building a dashboard prototype: Completed before meeting 5.
+Reviewing and testing the dashboard: Completing before meeting 6.
+Preparing the final presentation: Before we present.
+
+We are all responsible for each milestone - particularly for completing assigned tasks each week. At week 3 we will revisit scope to determine the continued plausibility of our project.
+
+Signatures Below confirm that each team member agrees to this charter:
+*Peter Sukstorf* *Yoyo Shi* *Henry Park*
