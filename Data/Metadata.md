@@ -53,28 +53,43 @@ together. Our final analysis aims to merge all matching sections across
 multiple surveys into one cohesive set of variables for analysis. In the
 interim, we have pulled the subject list from a 2017 study in Nepal.
 
-A. Household Roster B. Household Characteristics C. Supply and Demand of
-Electricity D. Willingness to Pay for a Grid Connection E. Willingness
-to Pay for Improved Electricity Supply F. Willingness to Pay for Solar
-Device G. Kerosene/Fuel-Based/Candle Lighting H. Dry-Cell Batteries I.
-Household Fuel Consumption for Cooking J. Use of Cooking Solutions K.
-Space and Water Heating L. Willingness to Pay for an Improved Cookstove
-N. Household Assets P. Household Economic Shocks Q. Street Lighting R.
-Time Use S. Health Impacts T. Attitudes U. Women’s Empowerment M.
-Consumption/Expenditure O. Household Land Ownership and Other Assets
+A. Household Roster 
+B. Household Characteristics 
+C. Supply and Demand of Electricity 
+D. Willingness to Pay for a Grid Connection 
+E. Willingness to Pay for Improved Electricity Supply 
+F. Willingness to Pay for Solar Device 
+G. Kerosene/Fuel-Based/Candle Lighting 
+H. Dry-Cell Batteries 
+I. Household Fuel Consumption for Cooking 
+J. Use of Cooking Solutions 
+K. Space and Water Heating 
+L. Willingness to Pay for an Improved Cookstove
+N. Household Assets 
+P. Household Economic Shocks 
+Q. Street Lighting 
+R. Time Use 
+S. Health Impacts 
+T. Attitudes 
+U. Women’s Empowerment 
+M. Consumption/Expenditure 
+O. Household Land Ownership and Other Assets
 
 For the purposes of our analysis, we are interested in the level of
 electricity access households have, the means by which they obtain that
 electricity access, and the various applications they can use
 electricity for. This will include some of the following variables:
 
-‘C\_2’ – is the household connected to the national grid? ‘C\_29’ – How
-many hours of electricity are available each day and night from the
-grid? ‘C\_64’ – In the last month how much electricity did your
-household use? ‘C\_65’ – In a typical month how much did you spend on
-electricity? ‘I\_3’ – In the last 12 months, did your household use
-LPG/Cooking Gas/Charcoal /Kerosene/Animal Waste/Plant
-Biomass/Sawdust/Biomass Briquettes/Wood Chips/ Biogas? ‘I\_13’ – In the
-last 7 days, how much of this fuel source did your household use? ‘K\_1’
-– Do you heat water for washing (either for washing dishes and clothes
-or for bathing?) ‘K\_4’ – Do you heat your house?
+‘C_2’ – is the household connected to the national grid? 
+‘C_29’ – How many hours of electricity are available each day and night from the
+grid? 
+‘C_64’ – In the last month how much electricity did your
+household use? 
+‘C_65’ – In a typical month how much did you spend on electricity? 
+‘I_3’ – In the last 12 months, did your household use LPG/Cooking Gas/Charcoal
+/Kerosene/Animal Waste/Plant Biomass/Sawdust/Biomass Briquettes/Wood Chips/ 
+Biogas? 
+‘I_13’ – In thelast 7 days, how much of this fuel source did your household use? 
+‘K\_1’ – Do you heat water for washing (either for washing dishes and clothes
+or for bathing?) 
+‘K\_4’ – Do you heat your house?
