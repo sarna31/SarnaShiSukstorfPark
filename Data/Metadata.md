@@ -90,6 +90,6 @@ household use?
 /Kerosene/Animal Waste/Plant Biomass/Sawdust/Biomass Briquettes/Wood Chips/ 
 Biogas? 
 ‘I_13’ – In thelast 7 days, how much of this fuel source did your household use? 
-‘K\_1’ – Do you heat water for washing (either for washing dishes and clothes
+‘K_1’ – Do you heat water for washing (either for washing dishes and clothes
 or for bathing?) 
-‘K\_4’ – Do you heat your house?
+‘K_4’ – Do you heat your house?
