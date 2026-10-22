@@ -1,5 +1,28 @@
 ---
 title: "ImportSelectData"
-output: html_document
+author: "Peter Sukstorf"
+date: "`r Sys.Date()`"
+output: pdf_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+```
+
+```{r Reading Main Datasets}
+Kenya_raw <- 
+  read_dta("Data/Raw/Kenya/MTF_HH_Core_Survey_Final_Data_trimmed-2.dta")
+Liberia_raw <- read_dta("Data/Raw/Liberia/MTF_HH_Main.dta")
+Niger_raw <- read_dta("Data/Raw/Niger/MTF_HH_Characteristics.dta")
+Rwanda_raw <- read_dta("Data/Raw/Rwanda/Main dataset.dta")
+Zambia_raw <- read_dta("Data/Raw/Zambia/EXPRESS SECTIONS.dta")
+
+
+```
