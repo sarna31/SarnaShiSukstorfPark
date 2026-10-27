@@ -1,0 +1,37 @@
+---
+title: "FilteredKenyaData"
+author: "Yoyo"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+library(tidyverse)
+```
+
+## Read data
+```{r packages}
+Kenya_raw <- 
+  read_dta("Data/Raw/Kenya/MTF_HH_Core_Survey_Final_Data_trimmed-2.dta")
+```
+
+## Yoink data we want
+```{r packages}
+Kenya_filtered <- Kenya_raw[,c(2,3,4,5,6,10,12,13,22,25,28,30,32,41,65,66,69,
+                            70,71,82,83,92,208,215,220,221,222,223,224,230,
+                            237,238,239,241,242,243,244,382,396,422,436,526,
+                            528,529,532,533)]
+```
+
+## Save as csv
+```{r packages}
+write.csv(Kenya_filtered, "Data/Processed/Kenya_filtered.csv", row.names = FALSE)
+```
