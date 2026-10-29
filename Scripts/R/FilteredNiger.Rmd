@@ -1,0 +1,33 @@
+---
+title: "FilteredNiger"
+author: "Peter"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+library(tidyverse)
+```
+
+## Read data
+```{r packages}
+Niger_raw <- read_dta("Data/Raw/Niger/MTF_HH_Characteristics.dta")
+```
+
+## Yoink data we want
+```{r packages}
+Niger_filtered <- Niger_raw[,c(1,8,9,10,12,14,13,20,22,26,29,31,43,80,85,86,87,106,105,113,358,363,371,372,373,379,392)]
+```
+
+## Save as csv
+```{r packages}
+write.csv(Niger_filtered, "Data/Processed/Niger_filtered.csv", row.names = FALSE)
+```
