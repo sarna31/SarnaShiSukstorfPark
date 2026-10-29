@@ -1,0 +1,33 @@
+---
+title: "FilteredKenyaData"
+author: "Yoyo"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+library(tidyverse)
+```
+
+## Read data
+```{r packages}
+Liberia_raw <- read_dta("Data/Raw/Liberia/MTF_HH_Main.dta")
+```
+
+## Yoink data we want
+```{r packages}
+Liberia_filtered <- Liberia_raw[,c(1,2,3,4,6,16,19,21,24,26,54,55,61,62,63,77,78,283,289,317,319,320,322,323,330,339,341,342,344,345,347,348,393,395,396,397,398)]
+```
+
+## Save as csv
+```{r packages}
+write.csv(Liberia_filtered, "Data/Processed/Liberia_filtered.csv", row.names = FALSE)
+```
