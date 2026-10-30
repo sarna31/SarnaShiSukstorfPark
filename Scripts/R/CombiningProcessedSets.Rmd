@@ -19,11 +19,11 @@ library(readr)
 
 ```{r Reading Main Datasets}
 Kenya_prelim <- 
-  read_csv("Data/Processed/Kenya_filtered.csv")
-Liberia_prelim <- read_csv("Data/Processed/Liberia_filtered.csv")
-Niger_prelim <- read_csv("Data/Processed/Niger_filtered.csv")
-Rwanda_prelim <- read_csv("Data/Processed/Rwanda_filtered.csv")
-Zambia_prelim <- read_csv("Data/Processed/Zambia_filtered.csv")
+  read_csv("Data/Processed/InitialProcessing/Kenya_filtered.csv")
+Liberia_prelim <- read_csv("Data/Processed/InitialProcessing/Liberia_filtered.csv")
+Niger_prelim <- read_csv("Data/Processed/InitialProcessing/Niger_filtered.csv")
+Rwanda_prelim <- read_csv("Data/Processed/InitialProcessing/Rwanda_filtered.csv")
+Zambia_prelim <- read_csv("Data/Processed/InitialProcessing/Zambia_filtered.csv")
 
 ```
 
@@ -115,7 +115,11 @@ Zambia_subset <- cbind(Country = "Zambia", Zambia_subset)
 
 ColumnTitles <- list("HH_ID", "Subdivision1", "Subdivision2", "UrbanOrRural", "ElectrificationStatus", "HouseholdSize", "DwellingType", "DwellingOwnership", "DwellingRoomsNumber", "BankAccount", "GridConnected", "NumYearsGridConnected", "GridConnectionFeeLocal", "GridConnectionFeeUSD", "InternalWiringFeeLocal", "InternalWiringFeeUSD", "ElectricityBillPriceLocal", "ElectricityBillPriceUSD", "ElectricityConsumptionkWh", "OutageDurationHours", "MobilePhonesOwned", "WillingToPayForConnection", "EstimateOfElectricitySpendingLocal", "EstimateOfElectricitySpendingUSD")
 
-
+write.csv(Kenya_subset, "Data/Processed/FilteredToWorkingVariables/Kenya_Processed.csv", row.names = FALSE)
+write.csv(Liberia_subset, "Data/Processed/FilteredToWorkingVariables/Liberia_Processed.csv", row.names = FALSE)
+write.csv(Niger_subset, "Data/Processed/FilteredToWorkingVariables/Niger_Processed.csv", row.names = FALSE)
+write.csv(Rwanda_subset, "Data/Processed/FilteredToWorkingVariables/Rwanda_Processed.csv", row.names = FALSE)
+write.csv(Zambia_subset, "Data/Processed/FilteredToWorkingVariables/Zambia_Processed.csv", row.names = FALSE)
 
 
 All_Combined <- rbind(Kenya_subset, Liberia_subset, Niger_subset, Rwanda_subset, Zambia_subset)
