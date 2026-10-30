@@ -99,5 +99,6 @@ ColumnTitles <- list("HH_ID", "Subdivision1", "Subdivision2", "UrbanOrRural", "E
 
 
 All_Combined <- rbind(Kenya_subset, Liberia_subset, Niger_subset, Rwanda_subset)
+write.csv(All_Combined, "Data/Processed/AllCountries_Processed.csv", row.names = FALSE)
 
 ```
