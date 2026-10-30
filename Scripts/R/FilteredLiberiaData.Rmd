@@ -20,10 +20,6 @@ library(tidyverse)
 ## Read data
 ```{r packages}
 Liberia_raw <- read_dta("Data/Raw/Liberia/MTF_HH_Main.dta")
-Liberia_rawc1 <- read_dta("Data/Raw/Liberia/MTF_HH_SectionC1.dta")
-Liberia_rawc2 <- read_dta("Data/Raw/Liberia/MTF_HH_SectionC2.dta")
-Liberia_rawc3 <- read_dta("Data/Raw/Liberia/MTF_HH_SectionC3.dta")
-Liberia_char <- read_dta("Data/Raw/Liberia/MTF_HH_Characteristics.dta")
 ```
 
 ## Yoink data we want

@@ -1,0 +1,103 @@
+---
+title: "CombiningProcessedSets"
+author: "Peter Sukstorf"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+```
+
+```{r Reading Main Datasets}
+Kenya_prelim <- 
+  read_csv("Data/Processed/Kenya_filtered.csv")
+Liberia_prelim <- read_csv("Data/Processed/Liberia_filtered.csv")
+Niger_prelim <- read_csv("Data/Processed/Niger_filtered.csv")
+Rwanda_prelim <- read_csv("Data/Processed/Rwanda_filtered.csv")
+#Zambia_prelim <- read_dta("Data/Processed/Zambia_filtered.csv")
+
+```
+
+
+```{r Grabbing the columns we need}
+
+ColumnTitles <- list("HH_ID", "Subdivision1", "Subdivision2", "UrbanOrRural", "ElectrificationStatus", "HouseholdSize", "DwellingType", "DwellingOwnership", "DwellingRoomsNumber", "BankAccount", "GridConnected", "NumYearsGridConnected", "GridConnectionFeeLocal", "GridConnectionFeeUSD", "InternalWiringFeeLocal", "InternalWiringFeeUSD", "ElectricityBillPriceLocal", "ElectricityBillPriceUSD", "ElectricityConsumptionkWh", "OutageDurationHours", "MobilePhonesOwned", "WillingToPayForConnection", "EstimateOfElectricitySpendingLocal", "EstimateOfElectricitySpendingUSD")
+
+
+Kenya_subset <- data.frame(
+  Kenya_prelim[,c(1,2,3,6,7,9,11,12,13,14,15,17,18)],
+  GridConnectionFeeUSD = NA,
+  Kenya_prelim[,c(19)],
+  InternalWiringFeeUSD = NA,
+  Kenya_prelim[,c(20)],
+  ElectricityBillPriceUSD = NA,
+  Kenya_prelim[,c(21,22,23,25,30)],
+  EstimateOfElectricitySpendingUSD = NA
+)
+colnames(Kenya_subset) <- ColumnTitles
+Kenya_subset <- cbind(Country = "Kenya", Kenya_subset)
+
+Rwanda_subset <- data.frame(
+  Rwanda_prelim[,c(1,2,3)],
+  UrbanOrRural = NA,
+  ElectrificationStatus = NA,
+  HouseholdSize = NA,
+  Rwanda_prelim[,c(8,9,10,11,12,14,15)],
+  GridConnectionFeeUSD = NA,
+  Rwanda_prelim[,c(16)],
+  InternalWiringFeeUSD = NA,
+  Rwanda_prelim[,c(17)],
+  ElectricityBillPriceUSD = NA,
+  Rwanda_prelim[,c(18,19)],
+  MobilePhonesOwned = NA,
+  Rwanda_prelim[,c(22)],
+  EstimateOfElectricitySpendingLocal = NA,
+  EstimateOfElectricitySpendingUSD = NA
+)
+colnames(Rwanda_subset) <- ColumnTitles
+Rwanda_subset <- cbind(Country = "Rwanda", Rwanda_subset)
+
+Liberia_subset <- data.frame(
+  Liberia_prelim[,c(1,3,4,5)],
+  ElectrificationStatus = NA,
+  Liberia_prelim[,c(6,8,9,10,11,12,14,15)],
+  GridConnectionFeeUSD = NA,
+  Liberia_prelim[,c(16)],
+  InternalWiringFeeUSD = NA,
+  Liberia_prelim[,c(17)],
+  ElectricityBillPriceUSD = NA,
+  Liberia_prelim[,c(18,19,20,22,27)],
+  EstimateOfElectricitySpendingUSD = NA
+)
+colnames(Liberia_subset) <- ColumnTitles
+Liberia_subset <- cbind(Country = "Liberia", Liberia_subset)
+
+Niger_subset <- data.frame(
+  Niger_prelim[,c(1,2,3,6,7,9,10,11,12,13,14,15,16)],
+  GridConnectionFeeUSD = NA,
+  Niger_prelim[,c(17)],
+  InternalWiringFeeUSD = NA,
+  Niger_prelim[,c(18)],
+  ElectricityBillPriceUSD = NA,
+  Niger_prelim[,c(19,20,21,23,26)],
+  EstimateOfElectricitySpendingUSD = NA
+)
+colnames(Niger_subset) <- ColumnTitles
+Niger_subset <- cbind(Country = "Niger", Niger_subset)
+
+ColumnTitles <- list("HH_ID", "Subdivision1", "Subdivision2", "UrbanOrRural", "ElectrificationStatus", "HouseholdSize", "DwellingType", "DwellingOwnership", "DwellingRoomsNumber", "BankAccount", "GridConnected", "NumYearsGridConnected", "GridConnectionFeeLocal", "GridConnectionFeeUSD", "InternalWiringFeeLocal", "InternalWiringFeeUSD", "ElectricityBillPriceLocal", "ElectricityBillPriceUSD", "ElectricityConsumptionkWh", "OutageDurationHours", "MobilePhonesOwned", "WillingToPayForConnection", "EstimateOfElectricitySpendingLocal", "EstimateOfElectricitySpendingUSD")
+
+#Zambia_subset <- Zambia_prelim[,c()]
+
+
+All_Combined <- rbind(Kenya_subset, Liberia_subset, Niger_subset, Rwanda_subset)
+
+```
