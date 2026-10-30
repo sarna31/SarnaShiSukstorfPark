@@ -26,42 +26,63 @@ Rwanda <- read_csv("Data/Processed/FilteredToWorkingVariables/Rwanda_processed.c
 Zambia <- read_csv("Data/Processed/FilteredToWorkingVariables/Zambia_processed.csv")
 
 ```
+``` {r Getting rid of 888}
+Kenya[Kenya == 888] <- NA
+
+Liberia[Liberia == 888] <- NA
+
+Niger[Niger == 888] <- NA
+
+Rwanda[Rwanda == 888] <- NA
+
+Zambia[Zambia == 888] <- NA
+
+```
 
 ``` {r Converting to USD}
-kenyaExchange = 1
+kenyaExchange = 1/102
 
 Kenya$GridConnectionFeeUSD = Kenya$GridConnectionFeeLocal * kenyaExchange
 Kenya$InternalWiringFeeUSD = Kenya$InternalWiringFeeLocal * kenyaExchange
-Kenya$ElectricitBillPriceUSD = Kenya$ElectricityBillPriceLocal * kenyaExchange
+Kenya$ElectricityBillPriceUSD = Kenya$ElectricityBillPriceLocal * kenyaExchange
 Kenya$EstimateOfElectricitySpendingUSD = Kenya$EstimateOfElectricitySpendingLocal * kenyaExchange
 
-LiberiaExchange = 1
+LiberiaExchange = 1/94.2
 
 Liberia$GridConnectionFeeUSD = Liberia$GridConnectionFeeLocal * LiberiaExchange
 Liberia$InternalWiringFeeUSD = Liberia$InternalWiringFeeLocal * LiberiaExchange
-Liberia$ElectricitBillPriceUSD = Liberia$ElectricityBillPriceLocal * LiberiaExchange
+Liberia$ElectricityBillPriceUSD = Liberia$ElectricityBillPriceLocal * LiberiaExchange
 Liberia$EstimateOfElectricitySpendingUSD = Liberia$EstimateOfElectricitySpendingLocal * LiberiaExchange
 
-NigerExchange = 1
+NigerExchange = 1/530
 
 Niger$GridConnectionFeeUSD = Niger$GridConnectionFeeLocal * NigerExchange
 Niger$InternalWiringFeeUSD = Niger$InternalWiringFeeLocal * NigerExchange
-Niger$ElectricitBillPriceUSD = Niger$ElectricityBillPriceLocal * NigerExchange
+Niger$ElectricityBillPriceUSD = Niger$ElectricityBillPriceLocal * NigerExchange
 Niger$EstimateOfElectricitySpendingUSD = Niger$EstimateOfElectricitySpendingLocal * NigerExchange
 
-RwandaExchange = 1
+RwandaExchange = 1/809
 
 Rwanda$GridConnectionFeeUSD = Rwanda$GridConnectionFeeLocal * RwandaExchange
 Rwanda$InternalWiringFeeUSD = Rwanda$InternalWiringFeeLocal * RwandaExchange
-Rwanda$ElectricitBillPriceUSD = Rwanda$ElectricityBillPriceLocal * RwandaExchange
+Rwanda$ElectricityBillPriceUSD = Rwanda$ElectricityBillPriceLocal * RwandaExchange
 Rwanda$EstimateOfElectricitySpendingUSD = Rwanda$EstimateOfElectricitySpendingLocal * RwandaExchange
 
-ZambiaExchange = 1
+ZambiaExchange = 1/11.7
 
 Zambia$GridConnectionFeeUSD = Zambia$GridConnectionFeeLocal * ZambiaExchange
 Zambia$InternalWiringFeeUSD = Zambia$InternalWiringFeeLocal * ZambiaExchange
-Zambia$ElectricitBillPriceUSD = Zambia$ElectricityBillPriceLocal * ZambiaExchange
+Zambia$ElectricityBillPriceUSD = Zambia$ElectricityBillPriceLocal * ZambiaExchange
 Zambia$EstimateOfElectricitySpendingUSD = Zambia$EstimateOfElectricitySpendingLocal * ZambiaExchange
+
+```
+
+``` {r getting rid of the last column that I made by accident}
+Kenya <- Kenya[, -ncol(Kenya)]
+Rwanda <- Rwanda[, -ncol(Rwanda)]
+Liberia <- Liberia[, -ncol(Liberia)]
+Niger <- Niger[, -ncol(Niger)]
+Zambia <- Zambia[, -ncol(Zambia)]
 
 ```
 
