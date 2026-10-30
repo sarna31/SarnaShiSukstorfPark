@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r packages}
 library(here)
 library(haven)
+library(readr)
 ```
 
 ```{r Reading Main Datasets}
@@ -22,7 +23,7 @@ Kenya_prelim <-
 Liberia_prelim <- read_csv("Data/Processed/Liberia_filtered.csv")
 Niger_prelim <- read_csv("Data/Processed/Niger_filtered.csv")
 Rwanda_prelim <- read_csv("Data/Processed/Rwanda_filtered.csv")
-#Zambia_prelim <- read_dta("Data/Processed/Zambia_filtered.csv")
+Zambia_prelim <- read_csv("Data/Processed/Zambia_filtered.csv")
 
 ```
 
@@ -93,12 +94,31 @@ Niger_subset <- data.frame(
 colnames(Niger_subset) <- ColumnTitles
 Niger_subset <- cbind(Country = "Niger", Niger_subset)
 
+
+Zambia_subset <- data.frame(
+  Zambia_prelim[,c(1,2,3,4)],
+  ElectrificationStatus = NA,
+  HouseholdSize = NA,
+  Zambia_prelim[,c(9,10,11,12,13,15,16)],
+  GridConnectionFeeUSD = NA,
+  Zambia_prelim[,c(17)],
+  InternalWiringFeeUSD = NA,
+  Zambia_prelim[,c(18)],
+  ElectricityBillPriceUSD = NA,
+  Zambia_prelim[,c(19,20,21,22)],
+  EstimateOfElectricitySpendingLocal = NA,
+  EstimateOfElectricitySpendingUSD = NA
+)
+colnames(Zambia_subset) <- ColumnTitles
+Zambia_subset <- cbind(Country = "Zambia", Zambia_subset)
+
+
 ColumnTitles <- list("HH_ID", "Subdivision1", "Subdivision2", "UrbanOrRural", "ElectrificationStatus", "HouseholdSize", "DwellingType", "DwellingOwnership", "DwellingRoomsNumber", "BankAccount", "GridConnected", "NumYearsGridConnected", "GridConnectionFeeLocal", "GridConnectionFeeUSD", "InternalWiringFeeLocal", "InternalWiringFeeUSD", "ElectricityBillPriceLocal", "ElectricityBillPriceUSD", "ElectricityConsumptionkWh", "OutageDurationHours", "MobilePhonesOwned", "WillingToPayForConnection", "EstimateOfElectricitySpendingLocal", "EstimateOfElectricitySpendingUSD")
 
-#Zambia_subset <- Zambia_prelim[,c()]
 
 
-All_Combined <- rbind(Kenya_subset, Liberia_subset, Niger_subset, Rwanda_subset)
+
+All_Combined <- rbind(Kenya_subset, Liberia_subset, Niger_subset, Rwanda_subset, Zambia_subset)
 write.csv(All_Combined, "Data/Processed/AllCountries_Processed.csv", row.names = FALSE)
 
 ```
