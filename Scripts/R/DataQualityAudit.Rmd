@@ -1,6 +1,6 @@
 ---
-title: "Data Quality Audit"
-author: "Yoyo Shi"
+title: "Data Quality Audit and Preliminary Analysis"
+author: "Audit: Yoyo Shi and Analysis: Ishaan Sarna"
 date: "`r Sys.Date()`"
 output: pdf_document
 ---
@@ -75,3 +75,117 @@ Duplicate <- All_Country %>%
 ```
 
 We looked for duplicates in the HH_ID column, because each household ID **should** be different. However, lots of duplicates came up, and the household size and dwelling type are different, even with the same household ID. Therefore the different rows with the same household ID should still be different households and we will keep these data.
+
+
+## Preliminary Analysis 
+
+```{r loading packages}
+library(dplyr)
+library(ggplot2)
+```
+
+```{r}
+# Calculating sample size by country
+country_summary <- All_Country %>%
+  group_by(Country) %>%
+  summarise(
+    Households = n(),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    Share = round(Households/sum(Households)*100,1)
+  )
+
+country_summary
+```
+
+As noted in the data quality audit, the final dataset contains 19,449 household observations across five countries: Kenya, Liberia, Niger, Rwanda, and Zambia. The table above shows the sample size of each country in the final dataset and what share of observations each country accounts for. Kenya has the largest share of observations in the dataset, with a sample size of 4590 households represented (23.6%) while Zambia has the lowest number of observations with a smaple size of 3612 households (18.6%). These differences are small enough that the dataset is relatively balanced across countries. This provides a reasonably even basis for comparing household-level patterns across the five countries, without any single country overwhelmingly dominating the pooled dataset. 
+
+### Analysis 1: Grid Connection
+
+```{r grid connection}
+# Calculating grid connection rates
+grid_connection_sumary <- All_Country %>%
+  filter(GridConnected %in% c(1,2)) %>%
+  group_by(Country) %>%
+  summarise(
+    Total_Valid = n(),
+    Connected = sum(GridConnected == 1),
+    Not_Connected = sum(GridConnected == 2),
+    Connection_Rate = round(
+      mean(GridConnected == 1)*100,1 
+    ),
+    .groups = "drop"
+  )
+
+grid_connection_sumary
+```
+
+The table shows substantial variation in electricity connection rates across the five represented countries. Kenya has 4590 valid observations with over 44.5% households with grid connection. Niger and Rwanda have similar connection rates of 47.3% and 49.5%, respectively, while Zambia has the lowest connection rate of 34.6%. Liberia has the highest connection rate of 78.2%, but this is based on only 87 valid observations, as compared to several thousand in the other countries. Therefore, Liberia's results should be interpreted cautiously. 
+
+The figure below visualizes this result:
+```{r grid connection rates}
+ggplot(grid_connection_sumary,
+       aes(x=reorder(Country, Connection_Rate),
+           y= Connection_Rate)) +
+  geom_col(fill="steelblue") +
+  labs(
+    title = "Household Grid Connection Rates by Country", 
+    x = "Country", 
+    y = "Grid-connected households (%)"
+  ) +
+  theme_minimal()
+```
+
+
+### Analysis 2: Outage
+
+```{r}
+outage_by_country <- All_Country %>%
+  filter(
+    !is.na(OutageDurationHours),
+    OutageDurationHours >= 0
+  )
+
+ggplot(outage_by_country, aes(x = Country, y = OutageDurationHours)) +
+  geom_boxplot() +
+  labs(
+    title = "Outage Duration by Country",
+    x = "Country",
+    y = "Outage Duration (hours)"
+  ) +
+  coord_cartesian(ylim = c(
+    0,
+    quantile(All_Country$OutageDurationHours, 0.95, na.rm = TRUE)
+  )) +
+  theme_minimal()
+```
+
+The boxplot shows differences in the distribution of reported electricity outage durations across countries. Liberia has a notably higher median outage duration and a much wider distribution than the other countries, suggesting that the households in this sample report longer and more variable outages. Kenya and Niger have lower median outage durations but contain high-value outliers. Rwanda and Zambia show comparitively lower and less variable distributions. 
+
+### Analysis 3: Consumption
+
+```{r}
+# Electricity consumption by country
+consumption_data <- All_Country %>%
+  filter(
+    !is.na(ElectricityConsumptionkWh),
+    ElectricityConsumptionkWh >= 0
+  )
+
+consumption_summary <- consumption_data %>%
+  group_by(Country) %>%
+  summarise(
+    Total_Valid = n(),
+    Mean_Consumption = round(mean(ElectricityConsumptionkWh), 2),
+    Median_Consumption = round(median(ElectricityConsumptionkWh), 2),
+    Max_Consumption = round(max(ElectricityConsumptionkWh), 2)
+  )
+
+consumption_summary
+```
+
+The table shows considerable variation in total household electricity consumption across five countries. Kenya has a median consumption of 50.6 kWh while Zambia has the highest median comsumption of 195 kWh. Rwanda and Liberia have considerably lower median consumption, at 9.3 kWh and 1 kWh, respectively. Niger has a median of 86 kWh but a much higher mean consumption of 2120 kWh, suggesting that a small number of extremely high consumption observations are skewing iiits average.   
+
+## Overall Interpretation 
+Taken together, these figures and preliminary analyses provide an initial picture of differences in household electricity access, consumption, and reliability across the five countries. However, these are preliminary descriptive comparisons and do not establish relationships between electricity access and economic development. Missing observations, extreme values, differences in sample sizes, and potentially inconsistent reporting across countries may influence the results. Further analysis should examine household-level averages and medians and investigate outliers
