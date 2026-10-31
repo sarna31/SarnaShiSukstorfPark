@@ -1,0 +1,77 @@
+---
+title: "Data Quality Audit"
+author: "Yoyo Shi"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages, message=FALSE}
+library(haven)
+library(tidyverse)
+```
+
+## Import dataset
+
+```{r Reading Dataset, message=FALSE, warning=FALSE}
+All_Country <- read_csv("Data/Processed/AllCountries_Processed.csv")
+```
+
+## Dataset Structure & Summary
+
+```{r structure & summary}
+dim(All_Country)
+summary(All_Country)
+```
+
+### Dimension
+
+Our dataset has 19449 rows and 25 columns. It is in long format, and each row represents a household.
+
+### Error
+
+From the summary function, we can see that the grid connection fee, internal wiring fee, electricity bill price, electricity consumption, and outage duration all have a minimum value of -8. By investigating the dataset, all of these "-8" values come from Zambia, so we might need to go back to the original dataset to debug.
+
+The "Grid connected" column for Liberia is a value ranging from 3-900 while the other countries have values of 1 or 2 where 1 means "yes" and 2 means "no". Need to verify if we used the correct columns from the Liberia dataset.
+
+The "Outage duration hours" column for Liberia is also very large, with a max of 3300 hours. This number should be the outage duration hours in a week, and a week only has 168 hours. Need to go back to the Liberia dataset to check if the column is correct, and if the unit is in hours or minute.
+
+"Electricity consumption kwh" column for Niger has a max of 67115.00. This column should be electricity consumption kwh per month. Niger in general has large numbers which is unreasonable for a household to use this much electricity. Therefore, might need to double check the unit or see if these are extreme values.
+
+### Formatting
+
+The electrification status are supposed in numeric values representing different categories, however this column for Niger is "character" with a written description.
+
+### Extreme value
+
+Dwelling room number has a max value of 2000 in Liberia which is unreasonable. Mobile phone number has a max value of 97985235 in Niger which is also unreasonable and need to be removed.
+
+## Missing Value
+
+```{r NA}
+colSums(is.na(All_Country))
+HH_ID_NA <- All_Country %>% filter(is.na(HH_ID))
+#view(HH_ID_NA)
+```
+
+Our Dataset has lots of NAs especially for the columns asking about more details of electricity bills, connection fees and outages, etc.
+
+There are 17 NAs in the HH_ID column. After viewing the rows with a missing household ID, 16 rows are from Liberia and 1 is from Niger. The other columns of these rows that has a missing household ID are also mostly NAs. We might consider removing these rows from the dataset because we can't be sure these are data from unique households.
+
+## Duplicate
+
+```{r Duplicate}
+Duplicate <- All_Country %>%
+  filter(!is.na(HH_ID)) %>%
+  add_count(Country, HH_ID, name = "count") %>%
+  filter(count > 1) %>%
+  arrange(Country, HH_ID)
+#view(Duplicate)
+```
+
+We looked for duplicates in the HH_ID column, because each household ID **should** be different. However, lots of duplicates came up, and the household size and dwelling type are different, even with the same household ID. Therefore the different rows with the same household ID should still be different households and we will keep these data.
