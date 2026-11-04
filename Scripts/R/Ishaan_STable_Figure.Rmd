@@ -1,0 +1,102 @@
+---
+title: "Figures and Summary Table"
+author: "Ishaan Sarna"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setup
+
+```{r loading packages}
+# Loading packages 
+library(haven)
+library(dplyr)
+library(kableExtra)
+library(ggplot2)
+library(knitr)
+```
+
+```{r}
+# Imoprting dataset
+country.df <- read_csv("Data/Processed/AllCountries_Processed.csv")
+```
+## Summary table
+
+```{r summary table}
+# Selecting relevant numeric variables
+numeric_vars <- c(
+  "HouseholdSize",
+  "DwellingRoomsNumber",
+  "NumYearsGridConnected",
+  "GridConnectionFeeUSD",
+  "InternalWiringFeeUSD",
+  "ElectricityBillPriceUSD",
+  "OutageDurationHours",
+  "ElectricityConsumptionkWh",
+  "EstimateOfElectricitySpendingUSD"
+)
+
+# Sorting and calculating descriptive statistics
+summary_table <- country.df %>% 
+  summarise(across(
+    all_of(numeric_vars), 
+    list(
+      N = ~sum(!is.na(.)),
+      Missing = ~sum(is.na(.)),
+      Mean = ~mean(., na.rm=TRUE),
+      Median = ~median(., na.rm=TRUE),
+      SD = ~sd(., na.rm=TRUE),
+      Min = ~min(., na.rm=TRUE),
+      Max = ~max(., na.rm=TRUE)
+    )
+  )) %>%
+  pivot_longer(everything(),
+               names_to = c("Variable", ".value"), 
+               names_pattern = "^(.*)_(N|Missing|Mean|Median|SD|Min|Max)$")
+
+kable(
+  summary_table,
+  caption = "Descriptive Statistics of Household-Level Variables",
+  col.names = c(
+    "Variable", "Valid Observations", "Missing Values", 
+    "Mean", "Median", "SD", "Min", "Max"
+  )
+)
+
+```
+
+
+## Figure: Urban-rural divide 
+```{r}
+urban_rural <- country.df %>%
+  filter(!is.na(UrbanOrRural), 
+         GridConnected %in% c(1,2),
+         UrbanOrRural %in% c(1,2)) %>%
+  mutate(
+    UrbanOrRural = factor(UrbanOrRural,
+                          levels = c(1,2), 
+                          labels = c("Urban", "Rural"))
+  ) %>%
+  group_by(Country, UrbanOrRural) %>%
+  summarise(
+    Connection_Rate = mean(GridConnected == 1),
+    .groups = "drop"
+  )
+
+ggplot(urban_rural, aes(x=Country, y=Connection_Rate, 
+                        fill=UrbanOrRural)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous(labels = scales::percent) # presenting y axis as %
+  labs(
+    title = "Urban vs Rural Comparison of Electricity Access", 
+    x = "Country", 
+    y = "Connection Rate (%)",
+    fill = "Urban or Rural"
+  ) +
+    theme_minimal()
+```
+
