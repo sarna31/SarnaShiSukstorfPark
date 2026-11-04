@@ -1,0 +1,87 @@
+---
+title: "Initial Analytical Application"
+author: "Yoyo Shi"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages, message=FALSE}
+library(tidyverse)
+```
+
+## Import dataset
+
+```{r Reading Dataset, message=FALSE, warning=FALSE}
+All_Country <- read_csv("Data/Processed/AllCountries_Processed.csv")
+```
+
+## Analysis
+
+Linear regression model between "Electricity Bill Price" and "Outage Duration Hours" to see if the higher the electricity bill, the more stable the connection is.
+
+```{r ggplot by country}
+#Kenya
+All_Country %>% 
+  filter(Country == "Kenya") %>%
+  ggplot(aes(x = OutageDurationHours, y = ElectricityBillPriceUSD)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+
+#Liberia
+All_Country %>% 
+  filter(Country == "Liberia") %>%
+  ggplot(aes(x = OutageDurationHours, y = ElectricityBillPriceUSD)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+
+#Niger
+All_Country %>% 
+  filter(Country == "Niger") %>%
+  ggplot(aes(x = OutageDurationHours, y = ElectricityBillPriceUSD)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+
+#Rwanda
+All_Country %>% 
+  filter(Country == "Rwanda") %>%
+  ggplot(aes(x = OutageDurationHours, y = ElectricityBillPriceUSD)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+
+#Zambia
+All_Country %>% 
+  filter(Country == "Zambia") %>%
+  ggplot(aes(x = OutageDurationHours, y = ElectricityBillPriceUSD)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Liberia is currently missing the values on Electricity bill price. Niger has some very large values on outage duration hours. Zambia somehow has some negative values on outage duration hours.
+
+```{r ggplot all country}
+All_Country %>% 
+  filter(OutageDurationHours >= 0 & OutageDurationHours <= 168) %>%
+  ggplot(aes(x = OutageDurationHours, y = ElectricityBillPriceUSD)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+  theme_classic()
+```
+
+I removed the values larger than 168 hours in the outage duration hours column, because a week can only have 168 hours and any number larger than that is likely an error.
+
+```{r Liner Regression Summary}
+All_Country_Filtered <- All_Country %>%
+  filter(OutageDurationHours >= 0 & OutageDurationHours <= 168)
+
+LinearRegression <- lm(ElectricityBillPriceUSD ~ OutageDurationHours,
+                       data = All_Country_Filtered)
+
+summary(LinearRegression)
+```
+From the Linear Regression summary the R value is 0.01862, showing a very week positive correlation between Electricity Bill Price and Outage Duration Hours.
