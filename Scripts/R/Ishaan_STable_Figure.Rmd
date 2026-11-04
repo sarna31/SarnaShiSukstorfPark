@@ -90,7 +90,13 @@ urban_rural <- country.df %>%
 ggplot(urban_rural, aes(x=Country, y=Connection_Rate, 
                         fill=UrbanOrRural)) +
   geom_col(position = "dodge") +
-  scale_y_continuous(labels = scales::percent) # presenting y axis as %
+  scale_y_continuous(labels = scales::percent) + # presenting y axis as %
+  scale_fill_manual(
+    values = c(
+      "Urban" = "steelblue",
+      "Rural" = "red"
+    )
+  )
   labs(
     title = "Urban vs Rural Comparison of Electricity Access", 
     x = "Country", 
@@ -100,3 +106,77 @@ ggplot(urban_rural, aes(x=Country, y=Connection_Rate,
     theme_minimal()
 ```
 
+###Context: 
+This figure compares household electricity connection rates between urban and rural areas across four countries: Kenya, Liberia, Niger, and Zambia. The chart excludes Rwanda because the dataset does not contain any valid urban-rural classifications for its 3,295 household observations, which is a significant limitation.
+
+###Findings: 
+The most notable finding is the substantial urban-rural divide in electricity access in Kenya and Zambia. The difference is approximately 57% in Kenya and 52% in Zambia. Liberia shows a moderate gap of approximately 29%. In contrast, Niger has almost no difference between urban and rural connection rates. Overall, this figure suggests that geographic location is a key factor in determining electricity access. 
+
+###Robustness Check:
+```{r}
+robust_data <- country.df %>%
+  filter(
+    UrbanOrRural %in% c(1, 2),
+    GridConnected %in% c(1, 2)
+  ) %>%
+  mutate(
+    UrbanOrRural = factor(
+      UrbanOrRural,
+      levels = c(1, 2),
+      labels = c("Urban", "Rural")
+    ),
+    Connected = as.numeric(GridConnected == 1)
+  )
+
+# Calculate connection rates for each country
+country_rates <- robust_data %>%
+  group_by(Country, UrbanOrRural) %>%
+  summarise(
+    Connection_Rate = mean(Connected) * 100,
+    .groups = "drop"
+  )
+
+# Calculate equal-weighted average across countries
+equal_weighted <- country_rates %>%
+  group_by(UrbanOrRural) %>%
+  summarise(
+    Connection_Rate = mean(Connection_Rate),
+    .groups = "drop"
+  )
+
+# Calculate pooled household-level rates
+pooled_rates <- robust_data %>%
+  group_by(UrbanOrRural) %>%
+  summarise(
+    Connection_Rate = mean(Connected) * 100,
+    .groups = "drop"
+  )
+
+# Compare the two methods
+robustness_table <- bind_rows(
+  pooled_rates %>% mutate(Method = "Pooled"),
+  equal_weighted %>% mutate(Method = "Equal-weighted")
+) %>%
+  select(Method, UrbanOrRural, Connection_Rate) %>%
+  pivot_wider(
+    names_from = UrbanOrRural,
+    values_from = Connection_Rate
+  ) %>%
+  mutate(Gap = Urban - Rural)
+
+
+# Display results
+kable(
+  robustness_table,
+  digits = 1,
+  col.names = c(
+    "Method",
+    "Urban Connection Rate (%)",
+    "Rural Connection Rate (%)",
+    "Urban-Rural Gap (percentage points)"
+  ),
+  caption = "Robustness Check: Pooled vs. Equal-Weighted Connection Rates"
+)
+```
+
+As a robustness check, I compared pooled household-level connection rates with equal-weighted averages of country-specific rates. Under the pooled approach, the urban connection rate was 61.3%, compared with 24.5% for rural households, representing a gap of around 36.8 points. When each country was given equal weight, the average urban electricity connection rates increased to 65.9%, while the rural connection rate increased to 31.6%, narrowing the gap to 34.4 points. Although the overall connection rates differ depending on the method, the disparity remains substantial under both approaches. This suggests that the finding is not driven solely by differences in country sample sizes.
