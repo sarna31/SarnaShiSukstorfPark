@@ -18,6 +18,7 @@ library(dplyr)
 library(kableExtra)
 library(ggplot2)
 library(knitr)
+library(tidyverse)
 ```
 
 ```{r}
