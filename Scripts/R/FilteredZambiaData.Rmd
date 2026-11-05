@@ -1,5 +1,35 @@
 ---
 title: "FilteredZambiaData"
-output: html_document
+author: "Ishaan"
+date: "`r Sys.Date()`"
+output: pdf_document
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+library(tidyverse)
+```
+
+## Read data
+```{r packages}
+Zambia_raw <- 
+  read_dta("Data/Raw/Zambia/EXPRESS SECTIONS.dta")
+```
+
+## Yoink data we want
+```{r packages}
+Zambia_filtered <- Zambia_raw[,c(1, 2, 3, 5, 11, 12, 13, 90, 93, 96, 98, 109, 120, 121, 127, 128, 129, 146, 147, 
+                                 163, 320, 331, 332, 336, 333, 344, 364, 365, 368, 369)]
+```
+
+## Save as csv
+```{r packages}
+write.csv(Zambia_filtered, "Data/Processed/Zambia_filtered.csv", row.names = FALSE)
+```

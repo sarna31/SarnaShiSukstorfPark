@@ -1,0 +1,70 @@
+---
+title: "Park_ExploratoryFigures(Week3)"
+author: "Henry Park"
+date: "2026-11-04"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r loading libraries}
+library(tidyverse)
+library(haven)
+library(here)
+```
+## Exploratory Data Analysis
+
+```{r loading data}
+mtf_data <- read_csv("Data/Processed/AllCountries_Processed.csv")
+```
+```{r bank account and grid connection}
+mtf_bank_grid <- mtf_data %>%
+  filter(
+    BankAccount %in% c(1,2),
+    GridConnected %in% c(1)
+  ) 
+
+bank_grid_plot <-
+  ggplot(mtf_bank_grid, aes(x = BankAccount, y = GridConnected)) +
+  geom_bar(stat = "identity") +
+  theme_minimal() +
+  labs(
+    title = "Observing Grid Connections by Household Bank Account Ownership",
+    x = "Households with/without Bank Accounts in a Formal Institution",
+    y = "Connection to Electric Grid"
+  )
+
+bank_grid_plot
+```
+One question I wanted to initially explore was the relation between households who had access to bank accounts with formal financial institutions and a household's access to the electric grid. In the MTF survey, both of these variables are answered with a simple binary answer, with a value of "1" indicating they have access to these services and a "2" indicating they do not.
+
+Filtering out null data and filtering only for households who indicated they have a grid connection, this figure compares which of those households already have / are able to access a bank account with a formal institution. Notably, we can confirm two findings from this--lacking access to a formal bank account and being connected to the electric grid are not mutually exclusive, but there is a greater amount of households connected to the grid which do have accesss to a formal bank account. 
+
+```{r country comparison}
+country_grid_data <- mtf_data %>%
+  filter(
+    BankAccount %in% c(1,2),
+    GridConnected %in% c(1),
+    Country %in% c("Kenya", "Rwanda", "Zambia")
+  ) 
+
+country_grid_plot <- 
+  ggplot(country_grid_data, aes(x = BankAccount, y = GridConnected)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ Country) +
+  theme_minimal() +
+  labs(
+    title = "Observing Grid Connections and Bank Account Ownership by Country",
+    x = "Households with/without Bank Accounts in a Formal Institution",
+    y = "Connection to Electric Grid"
+  )
+  
+country_grid_plot
+```
+For my point of comparison, I faceted the original graph to split off all of the countries with available data (Kenya, Rwanda, and Zambia) and graphed them separately to see if the patterns found in the original plot persists across individual countries. Taking a glance at the resulting plots, all of the graphs maintain the same pattern--bank account ownership is not strictly required to have the means to connect to the grid, but there is a stronger pattern of households connected to the grid which do have a formal bank account.
