@@ -33,6 +33,7 @@ Kenya$NumYearsGridConnected[Kenya$NumYearsGridConnected == 111] <- NA
 Liberia[Liberia == 888] <- NA
 
 Niger[Niger == 888] <- NA
+Niger$MobilePhonesOwned[Niger$MobilePhonesOwned >= 100] <- NA
 
 Rwanda[Rwanda == 888] <- NA
 

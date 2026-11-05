@@ -688,8 +688,8 @@
 "Niger",698,"agadez","arlit",1,"urbain_sans_electricite",2,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,15000,28.3018867924528
 "Niger",699,"agadez","arlit",1,"urbain_sans_electricite",2,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,10000,18.8679245283019
 "Niger",700,"agadez","arlit",1,"urbain_sans_electricite",1,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,2,NA,NA
-"Niger",701,"agadez","arlit",1,"urbain_sans_electricite",3,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,95421245,1,20000,37.7358490566038
-"Niger",702,"agadez","arlit",1,"urbain_sans_electricite",4,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,97985235,1,NA,NA
+"Niger",701,"agadez","arlit",1,"urbain_sans_electricite",3,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,20000,37.7358490566038
+"Niger",702,"agadez","arlit",1,"urbain_sans_electricite",4,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,NA,NA
 "Niger",703,"agadez","arlit",1,"urbain_avec_electricite",3,1,2,3,111,1,1,111,0.209433962264151,NA,NA,15000,28.3018867924528,NA,70,1,NA,NA,NA
 "Niger",704,"agadez","arlit",1,"urbain_avec_electricite",3,1,2,2,111,1,25,111,0.209433962264151,NA,NA,10000,18.8679245283019,NA,60,2,NA,NA,NA
 "Niger",705,"agadez","arlit",1,"urbain_avec_electricite",4,2,2,2,111,1,41,111,0.209433962264151,NA,NA,40000,75.4716981132076,NA,16,2,NA,NA,NA
@@ -2686,7 +2686,7 @@
 "Niger",2743,"maradi","tessaoua",2,"rural_sans_electricite",6,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,4000,7.54716981132075
 "Niger",2744,"zinder","takeita",2,"rural_avec_electricite",9,2,1,NA,111,1,9,NA,NA,NA,NA,1500,2.83018867924528,NA,4,0,NA,NA,NA
 "Niger",2745,"maradi","tessaoua",2,"rural_sans_electricite",4,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,3000,5.66037735849057
-"Niger",2746,"zinder","takeita",2,"rural_avec_electricite",3,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,88888888,1,5000,9.43396226415094
+"Niger",2746,"zinder","takeita",2,"rural_avec_electricite",3,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,5000,9.43396226415094
 "Niger",2747,"zinder","takeita",2,"rural_avec_electricite",8,2,1,NA,111,1,8,20000,37.7358490566038,9000,16.9811320754717,12000,22.6415094339623,NA,4,0,NA,NA,NA
 "Niger",2748,"zinder","takeita",2,"rural_avec_electricite",5,1,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,2,500,0.943396226415094
 "Niger",2749,"zinder","takeita",2,"rural_avec_electricite",6,1,1,NA,111,1,4,111,0.209433962264151,NA,NA,5000,9.43396226415094,NA,8,2,NA,NA,NA
