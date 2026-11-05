@@ -69,17 +69,21 @@ Rwanda_subset <- cbind(Country = "Rwanda", Rwanda_subset)
 Liberia_subset <- data.frame(
   Liberia_prelim[,c(1,3,4,5)],
   ElectrificationStatus = NA,
-  Liberia_prelim[,c(6,8,9,10,11,12,14,15)],
+  Liberia_prelim[,c(6,8,9,10)],
+  BankAccount = NA,
+  Liberia_prelim[,c(11,12,14)],
   GridConnectionFeeUSD = NA,
-  Liberia_prelim[,c(16)],
+  Liberia_prelim[,c(15)],
   InternalWiringFeeUSD = NA,
-  Liberia_prelim[,c(17)],
+  Liberia_prelim[,c(16)],
   ElectricityBillPriceUSD = NA,
   Liberia_prelim[,c(18,19,20,22,27)],
   EstimateOfElectricitySpendingUSD = NA
 )
 colnames(Liberia_subset) <- ColumnTitles
 Liberia_subset <- cbind(Country = "Liberia", Liberia_subset)
+
+ColumnTitles <- list("HH_ID", "Subdivision1", "Subdivision2", "UrbanOrRural", "ElectrificationStatus", "HouseholdSize", "DwellingType", "DwellingOwnership", "DwellingRoomsNumber", "BankAccount", "GridConnected", "NumYearsGridConnected", "GridConnectionFeeLocal", "GridConnectionFeeUSD", "InternalWiringFeeLocal", "InternalWiringFeeUSD", "ElectricityBillPriceLocal", "ElectricityBillPriceUSD", "ElectricityConsumptionkWh", "OutageDurationHours", "MobilePhonesOwned", "WillingToPayForConnection", "EstimateOfElectricitySpendingLocal", "EstimateOfElectricitySpendingUSD")
 
 Niger_subset <- data.frame(
   Niger_prelim[,c(1,2,3,6,7,9,10,11,12,13,14,15,16)],

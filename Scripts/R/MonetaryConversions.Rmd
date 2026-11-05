@@ -78,11 +78,11 @@ Zambia$EstimateOfElectricitySpendingUSD = Zambia$EstimateOfElectricitySpendingLo
 ```
 
 ``` {r getting rid of the last column that I made by accident}
-Kenya <- Kenya[, -ncol(Kenya)]
-Rwanda <- Rwanda[, -ncol(Rwanda)]
-Liberia <- Liberia[, -ncol(Liberia)]
-Niger <- Niger[, -ncol(Niger)]
-Zambia <- Zambia[, -ncol(Zambia)]
+#Kenya <- Kenya[, -ncol(Kenya)]
+#Rwanda <- Rwanda[, -ncol(Rwanda)]
+#Liberia <- Liberia[, -ncol(Liberia)]
+#Niger <- Niger[, -ncol(Niger)]
+#Zambia <- Zambia[, -ncol(Zambia)]
 
 ```
 
