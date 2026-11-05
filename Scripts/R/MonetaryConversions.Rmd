@@ -34,6 +34,7 @@ Liberia[Liberia == 888] <- NA
 
 Niger[Niger == 888] <- NA
 Niger$MobilePhonesOwned[Niger$MobilePhonesOwned >= 100] <- NA
+Niger$OutageDurationHours[Niger$OutageDurationHours > 168] <- NA
 
 Rwanda[Rwanda == 888] <- NA
 

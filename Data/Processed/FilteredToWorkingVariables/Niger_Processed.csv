@@ -653,11 +653,11 @@
 "Niger",661,"agadez","arlit",1,"urbain_sans_electricite",4,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,4500,8.49056603773585
 "Niger",662,"agadez","arlit",1,"urbain_sans_electricite",2,2,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,5000,9.43396226415094
 "Niger",664,"agadez","arlit",1,"urbain_sans_electricite",4,1,1,NA,1,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,3,1,10000,18.8679245283019
-"Niger",665,"agadez","arlit",1,"urbain_avec_electricite",4,1,1,NA,111,1,8,111,0.209433962264151,NA,NA,7500,14.1509433962264,NA,490,2,NA,NA,NA
+"Niger",665,"agadez","arlit",1,"urbain_avec_electricite",4,1,1,NA,111,1,8,111,0.209433962264151,NA,NA,7500,14.1509433962264,NA,NA,2,NA,NA,NA
 "Niger",666,"agadez","arlit",1,"urbain_avec_electricite",2,1,1,NA,111,1,5,111,0.209433962264151,NA,NA,12000,22.6415094339623,NA,56,1,NA,NA,NA
-"Niger",667,"agadez","arlit",1,"urbain_avec_electricite",4,1,2,2,111,1,8,111,0.209433962264151,NA,NA,5000,9.43396226415094,NA,350,2,NA,NA,NA
+"Niger",667,"agadez","arlit",1,"urbain_avec_electricite",4,1,2,2,111,1,8,111,0.209433962264151,NA,NA,5000,9.43396226415094,NA,NA,2,NA,NA,NA
 "Niger",668,"agadez","arlit",1,"urbain_avec_electricite",2,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,NA,NA
-"Niger",669,"agadez","arlit",1,"urbain_avec_electricite",3,1,2,3,111,1,4,111,0.209433962264151,NA,NA,6000,11.3207547169811,NA,660,3,NA,NA,NA
+"Niger",669,"agadez","arlit",1,"urbain_avec_electricite",3,1,2,3,111,1,4,111,0.209433962264151,NA,NA,6000,11.3207547169811,NA,NA,3,NA,NA,NA
 "Niger",670,"agadez","arlit",1,"urbain_sans_electricite",2,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,NA,NA
 "Niger",671,"agadez","arlit",1,"urbain_sans_electricite",6,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,4,1,NA,NA
 "Niger",672,"agadez","arlit",1,"urbain_sans_electricite",1,6,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,NA,NA
@@ -1103,8 +1103,8 @@
 "Niger",1119,"agadez","tchirozerine",1,"urbain_sans_electricite",3,1,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,2500,4.71698113207547
 "Niger",1120,"agadez","tchirozerine",1,"urbain_sans_electricite",3,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,NA,NA
 "Niger",1121,"agadez","tchirozerine",1,"urbain_avec_electricite",3,1,1,NA,111,1,3,NA,NA,NA,NA,6000,11.3207547169811,NA,28,2,NA,NA,NA
-"Niger",1122,"agadez","tchirozerine",1,"urbain_avec_electricite",2,2,1,NA,1,1,2,111,0.209433962264151,NA,NA,10000,18.8679245283019,NA,240,2,NA,NA,NA
-"Niger",1123,"agadez","tchirozerine",1,"urbain_avec_electricite",3,1,1,NA,111,1,3,NA,NA,NA,NA,7000,13.2075471698113,NA,420,2,NA,NA,NA
+"Niger",1122,"agadez","tchirozerine",1,"urbain_avec_electricite",2,2,1,NA,1,1,2,111,0.209433962264151,NA,NA,10000,18.8679245283019,NA,NA,2,NA,NA,NA
+"Niger",1123,"agadez","tchirozerine",1,"urbain_avec_electricite",3,1,1,NA,111,1,3,NA,NA,NA,NA,7000,13.2075471698113,NA,NA,2,NA,NA,NA
 "Niger",1124,"agadez","tchirozerine",1,"urbain_sans_electricite",3,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,15000,28.3018867924528
 "Niger",1125,"agadez","tchirozerine",1,"urbain_sans_electricite",2,1,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,20000,37.7358490566038
 "Niger",1126,"agadez","tchirozerine",1,"urbain_sans_electricite",1,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,NA,NA
@@ -1244,7 +1244,7 @@
 "Niger",1263,"dosso","loga",1,"urbain_avec_electricite",4,2,2,NA,111,1,15,111,0.209433962264151,NA,NA,2500,4.71698113207547,NA,5,1,NA,NA,NA
 "Niger",1264,"dosso","loga",1,"urbain_avec_electricite",2,1,2,2,111,1,2,111,0.209433962264151,NA,NA,4780,9.0188679245283,NA,5,2,NA,NA,NA
 "Niger",1265,"dosso","loga",1,"urbain_avec_electricite",6,1,1,NA,111,1,25,48750,91.9811320754717,5000,9.43396226415094,8200,15.4716981132075,NA,NA,4,NA,NA,NA
-"Niger",1266,"zinder","mirriah",2,"rural_avec_electricite",4,2,1,NA,111,1,5,0,0,NA,NA,250,0.471698113207547,NA,1440,1,NA,NA,NA
+"Niger",1266,"zinder","mirriah",2,"rural_avec_electricite",4,2,1,NA,111,1,5,0,0,NA,NA,250,0.471698113207547,NA,NA,1,NA,NA,NA
 "Niger",1267,"zinder","mirriah",2,"rural_avec_electricite",2,2,1,NA,111,1,5,25000,47.1698113207547,10000,18.8679245283019,10000,18.8679245283019,NA,1,1,NA,NA,NA
 "Niger",1268,"zinder","mirriah",2,"rural_avec_electricite",13,1,1,NA,111,1,3,NA,NA,NA,NA,5000,9.43396226415094,63,48,4,NA,NA,NA
 "Niger",1269,"zinder","mirriah",2,"rural_avec_electricite",8,1,1,NA,111,1,3,NA,NA,NA,NA,1500,2.83018867924528,NA,24,2,NA,NA,NA
@@ -1672,7 +1672,7 @@
 "Niger",1698,"zinder","ville_de_zinder",1,"urbain_avec_electricite",8,1,1,NA,111,1,4,111,0.209433962264151,NA,NA,3000,5.66037735849057,NA,3,3,NA,NA,NA
 "Niger",1699,"zinder","ville_de_zinder",1,"urbain_avec_electricite",4,2,2,2,111,1,6,111,0.209433962264151,NA,NA,9161,17.2849056603774,134,7,2,NA,NA,NA
 "Niger",1700,"niamey","ville_de_niamey",1,"urbain_avec_electricite",6,1,1,NA,111,1,4,NA,NA,3000,5.66037735849057,2000,3.77358490566038,50,NA,3,NA,NA,NA
-"Niger",1701,"niamey","ville_de_niamey",1,"urbain_avec_electricite",3,1,1,NA,111,1,1,NA,NA,NA,NA,15000,28.3018867924528,265,588,2,NA,NA,NA
+"Niger",1701,"niamey","ville_de_niamey",1,"urbain_avec_electricite",3,1,1,NA,111,1,1,NA,NA,NA,NA,15000,28.3018867924528,265,NA,2,NA,NA,NA
 "Niger",1702,"niamey","ville_de_niamey",1,"urbain_avec_electricite",3,1,1,NA,3,1,6,75000,141.509433962264,15000,28.3018867924528,15000,28.3018867924528,215,NA,4,NA,NA,NA
 "Niger",1703,"niamey","ville_de_niamey",1,"urbain_avec_electricite",3,1,2,3,3,1,1,65000,122.641509433962,15000,28.3018867924528,15000,28.3018867924528,158,NA,3,NA,NA,NA
 "Niger",1704,"niamey","ville_de_niamey",1,"urbain_avec_electricite",4,1,2,4,111,1,4,75000,141.509433962264,20000,37.7358490566038,4000,7.54716981132075,59,NA,3,NA,NA,NA
@@ -2618,7 +2618,7 @@
 "Niger",2673,"niamey","ville_de_niamey",1,"urbain_sans_electricite",6,2,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,15000,28.3018867924528
 "Niger",2674,"niamey","ville_de_niamey",1,"urbain_avec_electricite",2,2,2,2,111,1,1,111,0.209433962264151,NA,NA,6000,11.3207547169811,NA,56,2,NA,NA,NA
 "Niger",2675,"niamey","ville_de_niamey",1,"urbain_sans_electricite",6,2,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,10000,18.8679245283019
-"Niger",2678,"niamey","ville_de_niamey",1,"urbain_avec_electricite",6,2,1,NA,1,1,3,111,0.209433962264151,NA,NA,25000,47.1698113207547,NA,480,3,NA,NA,NA
+"Niger",2678,"niamey","ville_de_niamey",1,"urbain_avec_electricite",6,2,1,NA,1,1,3,111,0.209433962264151,NA,NA,25000,47.1698113207547,NA,NA,3,NA,NA,NA
 "Niger",2679,"niamey","ville_de_niamey",1,"urbain_sans_electricite",5,2,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,15000,28.3018867924528
 "Niger",2680,"niamey","ville_de_niamey",1,"urbain_sans_electricite",1,1,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,NA,NA
 "Niger",2681,"niamey","ville_de_niamey",1,"urbain_sans_electricite",1,2,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,NA,NA
@@ -3625,7 +3625,7 @@
 "Niger",3689,"niamey","ville_de_niamey",1,"urbain_sans_electricite",5,1,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,1,14000,26.4150943396226
 "Niger",3690,"niamey","ville_de_niamey",1,"urbain_avec_electricite",1,2,1,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,1500,2.83018867924528
 "Niger",3691,"niamey","ville_de_niamey",1,"urbain_sans_electricite",10,2,2,2,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,2,2,NA,NA
-"Niger",3692,"niamey","ville_de_niamey",1,"urbain_avec_electricite",3,2,1,NA,111,1,10,90000,169.811320754717,25000,47.1698113207547,60000,113.207547169811,148,280,3,NA,NA,NA
+"Niger",3692,"niamey","ville_de_niamey",1,"urbain_avec_electricite",3,2,1,NA,111,1,10,90000,169.811320754717,25000,47.1698113207547,60000,113.207547169811,148,NA,3,NA,NA,NA
 "Niger",3693,"niamey","ville_de_niamey",1,"urbain_sans_electricite",6,2,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,2,NA,NA
 "Niger",3694,"niamey","ville_de_niamey",1,"urbain_avec_electricite",5,1,1,NA,111,1,14,35000,66.0377358490566,20000,37.7358490566038,11000,20.7547169811321,117,NA,6,NA,NA,NA
 "Niger",3695,"niamey","ville_de_niamey",1,"urbain_avec_electricite",1,1,2,NA,111,2,NA,NA,NA,NA,NA,NA,NA,NA,NA,1,1,1500,2.83018867924528

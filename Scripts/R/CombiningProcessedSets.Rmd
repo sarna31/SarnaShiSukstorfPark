@@ -77,7 +77,8 @@ Liberia_subset <- data.frame(
   InternalWiringFeeUSD = NA,
   Liberia_prelim[,c(16)],
   ElectricityBillPriceUSD = NA,
-  Liberia_prelim[,c(18,19,20,22,27)],
+  Liberia_prelim[,c(18,19,20,22)],
+  EstimateOfElectricitySpendingLocal = NA,
   EstimateOfElectricitySpendingUSD = NA
 )
 colnames(Liberia_subset) <- ColumnTitles
