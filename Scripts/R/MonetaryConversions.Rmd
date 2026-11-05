@@ -28,6 +28,7 @@ Zambia <- read_csv("Data/Processed/FilteredToWorkingVariables/Zambia_processed.c
 ```
 ``` {r Getting rid of 888}
 Kenya[Kenya == 888] <- NA
+Kenya$NumYearsGridConnected[Kenya$NumYearsGridConnected == 111] <- NA
 
 Liberia[Liberia == 888] <- NA
 
