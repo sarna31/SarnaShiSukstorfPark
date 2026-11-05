@@ -38,6 +38,7 @@ Niger$MobilePhonesOwned[Niger$MobilePhonesOwned >= 100] <- NA
 Rwanda[Rwanda == 888] <- NA
 
 Zambia[Zambia == 888] <- NA
+Zambia[Zambia == -8] <- NA
 
 ```
 
