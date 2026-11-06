@@ -1,0 +1,160 @@
+---
+title: "Region Summary Table"
+author: "Yoyo Shi"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading packages
+
+```{r packages}
+library(here)
+library(haven)
+library(tidyverse)
+```
+
+## Import dataset
+
+```{r Reading Dataset, message=FALSE, warning=FALSE}
+All_Country <- read_csv("Data/Processed/AllCountries_Processed.csv")
+```
+
+##Data Cleaning
+
+I will add stuff to this chunk and use the summary function later to check for weird data. And come back to add to this chunk AGAIN >:(
+
+```{r data cleaning}
+##Change code to NA
+All_Country$DwellingType[All_Country$DwellingType == 555] <- NA
+All_Country$BankAccount[All_Country$BankAccount == 111] <- NA
+
+
+##Remove extreme values
+All_Country$DwellingRoomsNumber[All_Country$DwellingRoomsNumber >= 500] <- NA
+
+All_Country$NumYearsGridConnected[All_Country$NumYearsGridConnected >= 720] <- NA
+
+
+##Remove unknown categories
+
+All_Country$GridConnectionFeeLocal[All_Country$GridConnectionFeeLocal < 0] <- NA
+All_Country$GridConnectionFeeUSD[All_Country$GridConnectionFeeUSD < 0] <- NA
+
+All_Country$WillingToPayForConnection[All_Country$WillingToPayForConnection >= 3] <- NA
+
+
+##Special
+#BankAccount = 3 means joint account with spouse, so I consider it yes. (2 is yes 1 is no)
+All_Country$BankAccount[All_Country$BankAccount == 3] <- 2
+
+#GridConnectionFee = 111 means household is already connected, so spent 0.
+All_Country$GridConnectionFeeLocal[All_Country$GridConnectionFeeLocal == 111] <- 0
+All_Country$GridConnectionFeeUSD[All_Country$GridConnectionFeeUSD == 1.088235294] <- 0
+All_Country$GridConnectionFeeUSD[All_Country$GridConnectionFeeUSD == 1.0882353] <- 0
+All_Country$GridConnectionFeeUSD[All_Country$GridConnectionFeeUSD == 1.088235] <- 0
+All_Country$GridConnectionFeeUSD[All_Country$GridConnectionFeeUSD == 1.178344] <- 0
+All_Country$GridConnectionFeeUSD[All_Country$GridConnectionFeeUSD == 0.209434] <- 0
+
+#UrbanOrRural = 3 is peri-urban, basically transition zone, for the purpose of the analysis, removed.
+All_Country$UrbanOrRural[All_Country$UrbanOrRural == 3] <- NA
+```
+
+
+## Dataset Structure & Summary
+
+```{r structure & summary}
+dim(All_Country)
+summary(All_Country)
+```
+
+## Creating Table
+
+Here are the variables I used: UrbanOrRural, HouseholdSize, DwellingOwnership, DwellingRoomsNumber, BankAccount, GridConnected, NumYearsGridConnected, GridConnectionFeeUSD, InternalWiringFeeUSD, ElectricityBillPriceUSD, ElectricityConsumptionkWh, OutageDurationHours, MobilePhonesOwned, WillingToPayForConnection, EstimateOfElectricitySpendingUSD
+
+I didn't use: ElectrificationStatus, DwellingType, GridConnectionFeeLocal, InternalWiringFeeLocal, ElectricityBillPriceLocal, EstimateOfElectricitySpendingLocal
+
+```{r country summary table}
+Country_Summary <- All_Country %>% 
+  group_by(Country) %>% 
+  summarise(
+    Percent_Urban = mean(UrbanOrRural == 1, na.rm = TRUE) * 100,
+    Mean_HouseholdSize = mean(HouseholdSize, na.rm = TRUE),
+    Percent_OwnDwelling = mean(DwellingOwnership == 1, na.rm = TRUE) * 100,
+    Mean_DwellingRoomsNumber = mean(DwellingRoomsNumber, na.rm = TRUE),
+    Percent_OwnBankAccount = mean(BankAccount == 2, na.rm = TRUE) * 100,
+    Percent_GridConnected = mean(GridConnected == 1, na.rm = TRUE) * 100,
+    Mean_YearsConnected = mean(NumYearsGridConnected, na.rm = TRUE),
+    Mean_GridConnectionUSD = mean(GridConnectionFeeUSD, na.rm = TRUE),
+    Mean_InternalWiringUSD = mean(InternalWiringFeeUSD, na.rm = TRUE),
+    Mean_ElectricityBillUSD = mean(ElectricityBillPriceUSD, na.rm = TRUE),
+    Mean_ElectricityConsumptionkWh = mean(ElectricityConsumptionkWh, na.rm = TRUE),
+    Mean_OutageHours = mean(OutageDurationHours, na.rm = TRUE),
+    Mean_MobilePhone = mean(MobilePhonesOwned, na.rm = TRUE),
+    Percent_WillingToPayForConnection = mean(
+      WillingToPayForConnection == 1, na.rm = TRUE) * 100,
+    Mean_EstimateSpendingUSD = mean(EstimateOfElectricitySpendingUSD, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+
+```{r Subdivision1 summary table}
+Subdivision1_Summary <- All_Country %>% 
+  group_by(Country, Subdivision1) %>% 
+  summarise(
+    Percent_Urban = mean(UrbanOrRural == 1, na.rm = TRUE) * 100,
+    Mean_HouseholdSize = mean(HouseholdSize, na.rm = TRUE),
+    Percent_OwnDwelling = mean(DwellingOwnership == 1, na.rm = TRUE) * 100,
+    Mean_DwellingRoomsNumber = mean(DwellingRoomsNumber, na.rm = TRUE),
+    Percent_OwnBankAccount = mean(BankAccount == 2, na.rm = TRUE) * 100,
+    Percent_GridConnected = mean(GridConnected == 1, na.rm = TRUE) * 100,
+    Mean_YearsConnected = mean(NumYearsGridConnected, na.rm = TRUE),
+    Mean_GridConnectionUSD = mean(GridConnectionFeeUSD, na.rm = TRUE),
+    Mean_InternalWiringUSD = mean(InternalWiringFeeUSD, na.rm = TRUE),
+    Mean_ElectricityBillUSD = mean(ElectricityBillPriceUSD, na.rm = TRUE),
+    Mean_ElectricityConsumptionkWh = mean(ElectricityConsumptionkWh, na.rm = TRUE),
+    Mean_OutageHours = mean(OutageDurationHours, na.rm = TRUE),
+    Mean_MobilePhone = mean(MobilePhonesOwned, na.rm = TRUE),
+    Percent_WillingToPayForConnection = mean(
+      WillingToPayForConnection == 1, na.rm = TRUE) * 100,
+    Mean_EstimateSpendingUSD = mean(EstimateOfElectricitySpendingUSD, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+
+```{r Subdivision2 summary table}
+Subdivision2_Summary <- All_Country %>% 
+  group_by(Country, Subdivision1, Subdivision2) %>% 
+  summarise(
+    Percent_Urban = mean(UrbanOrRural == 1, na.rm = TRUE) * 100,
+    Mean_HouseholdSize = mean(HouseholdSize, na.rm = TRUE),
+    Percent_OwnDwelling = mean(DwellingOwnership == 1, na.rm = TRUE) * 100,
+    Mean_DwellingRoomsNumber = mean(DwellingRoomsNumber, na.rm = TRUE),
+    Percent_OwnBankAccount = mean(BankAccount == 2, na.rm = TRUE) * 100,
+    Percent_GridConnected = mean(GridConnected == 1, na.rm = TRUE) * 100,
+    Mean_YearsConnected = mean(NumYearsGridConnected, na.rm = TRUE),
+    Mean_GridConnectionUSD = mean(GridConnectionFeeUSD, na.rm = TRUE),
+    Mean_InternalWiringUSD = mean(InternalWiringFeeUSD, na.rm = TRUE),
+    Mean_ElectricityBillUSD = mean(ElectricityBillPriceUSD, na.rm = TRUE),
+    Mean_ElectricityConsumptionkWh = mean(ElectricityConsumptionkWh, na.rm = TRUE),
+    Mean_OutageHours = mean(OutageDurationHours, na.rm = TRUE),
+    Mean_MobilePhone = mean(MobilePhonesOwned, na.rm = TRUE),
+    Percent_WillingToPayForConnection = mean(
+      WillingToPayForConnection == 1, na.rm = TRUE) * 100,
+    Mean_EstimateSpendingUSD = mean(EstimateOfElectricitySpendingUSD, na.rm = TRUE),
+    .groups = "drop"
+  )
+```
+
+## Write csv
+```{r write csv}
+write.csv(Country_Summary, "Data/Processed/Country_Summary.csv", row.names = FALSE)
+write.csv(Subdivision1_Summary, "Data/Processed/Subdivision1_Summary.csv", row.names = FALSE)
+write.csv(Subdivision2_Summary, "Data/Processed/Subdivision2_Summary.csv", row.names = FALSE)
+```
+
