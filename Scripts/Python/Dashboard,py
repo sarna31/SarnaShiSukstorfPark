@@ -19,11 +19,13 @@ from shiny import ui, render, App
 
 #%%Setting base paths
 base_path = Path(__file__).parent.parent.parent
-data_path = base_path / "Data" / "Processed" / "Subdivision2_Summary.csv"
+data1_path = base_path / "Data" / "Processed" / "Subdivision1_Summary.csv"
+data2_path = base_path / "Data" / "Processed" / "Subdivision2_Summary.csv"
 country_path = base_path / "Data" / "Raw" / "CountryMaps"
 
 #Reading in Subdivision 2 data
-Sub2_df = pd.read_csv(data_path)
+Sub1_df = pd.read_csv(data1_path)
+Sub2_df = pd.read_csv(data2_path)
 
 #Reading in coutnry geodatabases
 KEN = gpd.read_file(country_path / "gadm41_KEN_2.json")
@@ -32,7 +34,28 @@ NER = gpd.read_file(country_path / "gadm41_NER_2.json")
 RWA = gpd.read_file(country_path / "gadm41_RWA_2.json")
 ZMB = gpd.read_file(country_path / "gadm41_ZMB_1.json")
 
-KEN.columns
+#%% testing
+KEN.info()
+#KEN.plot(column="GID_1", 
+         #color = "white", 
+         #edgecolor='darkblue',
+          #linewidth=1.5)
+
+print(KEN['NAME_1'].unique())
+KEN_data = Sub2_df[Sub2_df["Country"] == "Kenya"]
+
+KEN = KEN.dissolve(
+    by = 'NAME_1'
+)
+
+KEN_gdf = KEN.merge(
+    KEN_data, 
+    left_on='NAME_1', 
+    right_on='Subdivision2', 
+    how='left'
+)
+KEN_gdf.head(30)
+KEN_gdf.info()
 
 
 #%%
