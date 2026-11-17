@@ -1,0 +1,154 @@
+---
+title: "Regression Analysis"
+author: "Ishaan Sarna"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+data <- read_csv("Data/Processed/AllCountries_Processed.csv")
+```
+```{r}
+reg_data <- data %>%
+  filter(
+    UrbanOrRural %in% c(1,2),
+    GridConnected %in% c(1,2)
+  ) %>%
+  # Recoding coefficients for easier interpretation
+  mutate(
+    Urban = ifelse(UrbanOrRural == 1,1,0), # Urban = 1: urban; Urban = 0: rural 
+    Connected = ifelse(GridConnected == 1,1,0), # Connected = 1: connected; Connected = 0: not connected
+    Country = as.factor(Country))
+```
+
+
+```{r}
+# Are there differences in grid connecton between urban and rural areas, controlling for country? 
+# Baseline regression 
+model1 <- glm(
+  Connected ~ Urban + Country, 
+  data = reg_data, 
+  family = binomial(link="logit")
+)
+
+summary(model1)
+```
+
+```{r}
+# Converting coefficients to odd ratios by exponentiating them
+# Exponentiating coefs makes it easier to understand how odds of grid connection differ
+# between urban and rural households 
+
+exp(coef(model1))
+```
+
+
+The above regression model examines the relationship between urban/rural location and grid connectivity, controlling for country. Urban location has a strong positive and statistically significant association with grid connection. Holding country contant, urban households have approximately 5.85 times the odds of being connected to the grid than rural households. There are also differences between countries: compared with Kenya (which was our baseline), households in Liberia have 85% lower odds of connection, while those in Zambia have 47% lower odds. Niger's odds are approximately 12% lower than Kenya's. These findings suggest that both settlement type and country are important predictors of electricity access.
+
+
+```{r}
+plt_data <- reg_data 
+
+plt_data$Predicted <- predict(
+  model1, 
+  type ="response"
+)
+
+ggplot(plt_data, aes(
+  x=Country,
+  y=Predicted,
+  fill=factor(Urban)
+)) +
+  stat_summary(fun = mean, geom = "col", position = "dodge") +
+  scale_fill_manual(
+    name = "Location",
+    values = c("0" = "darkred", "1" = "steelblue"),
+    labels = c("0" = "Rural", "1" = "Urban")
+  ) +
+  labs(
+    title = "Grid Connection by Country",
+    x = "Country", 
+    y = "Predicted Probability", 
+    color = "Location"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(hjust=0.5, face="bold", size=16), 
+    axis.title = element_text(face="bold"), 
+    axis.text = element_text(color="black"),
+    legend.title = element_text(face="bold")
+  )
+```
+
+
+```{r}
+model1_int <- glm(
+  Connected ~ Urban * Country,
+  data = reg_data,
+  family = binomial(link = "logit")
+)
+
+summary(model1_int)
+
+exp(coef(model1_int))
+```
+
+This model introduces an interaction between the urban/rural setting and country to examine whether the urban-rural divide varies across countries. Urban households have approximately 13.36 times the odds of having grid connection in Kenya and 108.7 times the odds in Liberia compared to rural households in the respective countries. In Niger, the estimated odds are nearly identical between urban and rural households and Zambia exhibits a substantial advantage in urban areas.  
+
+```{r}
+plt_data$Predicted_Interaction <- predict(
+  model1_int, 
+  type ="response"
+)
+
+ggplot(plt_data, aes(
+  x=Country,
+  y=Predicted_Interaction,
+  fill=factor(Urban)
+)) +
+  stat_summary(fun = mean, geom = "col",
+               position = position_dodge(width=0.8),
+               width=0.65) +
+  scale_fill_manual(
+    name = "Location", 
+    values = c("0" = "darkred", "1" = "steelblue"),
+    labels = c("0" = "Rural", "1" = "Urban")
+  ) +
+  labs(
+    title = "Interaction Model: Grid Connection by Country",
+    x = "Country", 
+    y = "Predicted Probability", 
+    color = "Location"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(hjust=0.5, face="bold", size=16),
+    axis.title = element_text(face="bold"), 
+    axis.text = element_text(color="black"),
+    legend.title = element_text(face="bold")
+  )
+```
+
+
+```{r}
+model2 <- glm(
+  Connected ~ Urban + Country + HouseholdSize,
+  data = reg_data,
+  family = binomial(link = "logit")
+)
+
+summary(model2)
+exp(coef(model2))
+```
+
+This model adds household size to examine whether household demographics explain grid connectivity. Following the trend, urban households tend to have significantly higher odds of grid connection, approximately 4.48 times those of rural households, holding country and household size constant. Liberia continues to exhibit significantly lower odds than Kenya, while Niger's difference is not significant. Household size is not statistically significant, implying that it does not independently explain grid connectivity. However, a limitation of this model is that it excludes Zambia and Rwanda since these countries do not report household size data. 
+
+
