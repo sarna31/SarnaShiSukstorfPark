@@ -34,6 +34,76 @@ NER = gpd.read_file(country_path / "gadm41_NER_2.json")
 RWA = gpd.read_file(country_path / "gadm41_RWA_2.json")
 ZMB = gpd.read_file(country_path / "gadm41_ZMB_1.json")
 
+#%% Wrangling Kenya
+KEN_data = Sub2_df[Sub2_df["Country"] == "Kenya"]
+
+KEN = KEN.dissolve(
+    by = 'NAME_1'
+)
+
+KEN_gdf = KEN.merge(
+    KEN_data, 
+    left_on='NAME_1', 
+    right_on='Subdivision2', 
+    how='left'
+)
+
+#%% Wrangling Liberia
+LBR_data = Sub1_df[Sub1_df["Country"] == "Liberia"]
+
+LBR = LBR.dissolve(
+    by = 'NAME_1'
+)
+
+LBR_gdf = LBR.merge(
+    LBR_data, 
+    left_on='NAME_1', 
+    right_on='Subdivision1', 
+    how='left'
+)
+
+#%% Wrangling Niger
+NER_data = Sub2_df[Sub2_df["Country"] == "Niger"]
+
+NER = NER.dissolve(
+    by = 'NAME_1'
+)
+
+NER_gdf = NER.merge(
+    NER_data, 
+    left_on='NAME_1', 
+    right_on='Subdivision2', 
+    how='left'
+)
+
+#%% Wrangling Rwanda
+RWA_data = Sub2_df[Sub2_df["Country"] == "Rwanda"]
+
+RWA = RWA.dissolve(
+    by = 'NAME_1'
+)
+
+RWA_gdf = RWA.merge(
+    RWA_data, 
+    left_on='NAME_1', 
+    right_on='Subdivision2', 
+    how='left'
+)
+
+#%% Wrangling Zambia
+ZMB_data = Sub1_df[Sub1_df["Country"] == "Zambia"]
+
+ZMB = ZMB.dissolve(
+    by = 'NAME_1'
+)
+
+ZMB_gdf = ZMB.merge(
+    ZMB_data, 
+    left_on='NAME_1', 
+    right_on='Subdivision1', 
+    how='left'
+)
+
 #%% testing
 KEN.info()
 #KEN.plot(column="GID_1", 
