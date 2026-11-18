@@ -151,4 +151,32 @@ exp(coef(model2))
 
 This model adds household size to examine whether household demographics explain grid connectivity. Following the trend, urban households tend to have significantly higher odds of grid connection, approximately 4.48 times those of rural households, holding country and household size constant. Liberia continues to exhibit significantly lower odds than Kenya, while Niger's difference is not significant. Household size is not statistically significant, implying that it does not independently explain grid connectivity. However, a limitation of this model is that it excludes Zambia and Rwanda since these countries do not report household size data. 
 
+```{r}
+bank_reg_data <- data %>%
+  filter(
+    UrbanOrRural %in% c(1,2),
+    GridConnected %in% c(1,2), 
+    BankAccount %in% c(1,2)
+  ) %>%
+  # Recoding coefficients for easier interpretation
+  mutate(
+    Urban = ifelse(UrbanOrRural == 1,1,0), # Urban = 1: urban; Urban = 0: rural 
+    Connected = ifelse(GridConnected == 1,1,0), # Connected = 1: connected; Connected = 0: not connected
+    BankAccount = ifelse(BankAccount == 1,1,0),
+    Country = as.factor(Country))
+```
 
+```{r}
+# How is grid connectivity correlated with bank account ownership,
+# controlling for country?
+model_bank1 <- glm(
+  Connected ~ BankAccount + Country + Urban,
+  data = bank_reg_data,
+  family = binomial(link = "logit")
+)
+
+summary(model_bank1)
+exp(coef(model_bank1))
+```
+
+The above model shows a strong association between grid connection, bank account ownership, and urban-rural divide.  Particularly, households with a bank account have 6.17 times higher odds of grid connection than households without one, after controlling for country and urbn/rural location. Urban households have nearly 12 times higher odds of grid connection than rural households. Across countries, Zambia has significantly lower odds of grid connection than Kenya, while the differences between Niger and Kenya is not significantly different.  
