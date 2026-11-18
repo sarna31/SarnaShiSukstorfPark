@@ -180,3 +180,16 @@ exp(coef(model_bank1))
 ```
 
 The above model shows a strong association between grid connection, bank account ownership, and urban-rural divide.  Particularly, households with a bank account have 6.17 times higher odds of grid connection than households without one, after controlling for country and urbn/rural location. Urban households have nearly 12 times higher odds of grid connection than rural households. Across countries, Zambia has significantly lower odds of grid connection than Kenya, while the differences between Niger and Kenya is not significantly different.  
+
+```{r}
+model_bank2 <- glm(
+  Connected ~ BankAccount*Urban + Country,
+  data = bank_reg_data,
+  family = binomial(link = "logit")
+)
+
+summary(model_bank2)
+exp(coef(model_bank2))
+
+```
+
