@@ -19,10 +19,11 @@ from shiny import ui, render, App, reactive
 import matplotlib
 
 #%%Setting base paths
-base_path = Path(__file__).parent.parent.parent
-data1_path = base_path / "Data" / "Processed" / "Subdivision1_Summary.csv"
-data2_path = base_path / "Data" / "Processed" / "Subdivision2_Summary.csv"
-country_path = base_path / "Data" / "Raw" / "CountryMaps"
+base_path = Path(__file__).parent
+
+data1_path = base_path / "DashboardData" / "Subdivision1_Summary.csv"
+data2_path = base_path / "DashboardData" / "Subdivision2_Summary.csv"
+country_path = base_path / "DashboardData"
 
 #Reading in Subdivision 2 data
 Sub1_df = pd.read_csv(data1_path)
@@ -188,12 +189,22 @@ def server(input, output, session):
         if gdf.crs is not None and gdf.crs.to_epsg() != 4326:
             gdf = gdf.to_crs(epsg=4326)
 
+
+        if "Subdivision2" in gdf.columns:
+            subdivision_col = "Subdivision2"
+        else:
+            subdivision_col = "Subdivision1"
+
+
         # Generate an interactive Folium map using GeoPandas .explore()
         m = gdf.explore(
             column=var,
             cmap="viridis",
             legend=True,
-            tooltip=True,
+            tooltip=[subdivision_col, var],
+            tooltip_kwds={
+                 "aliases": ["District:", var]
+                },
             tiles="OpenStreetMap",
         )
 
